@@ -105,6 +105,7 @@ function filterCategory(cat){
 }
 
 /* Modal */
+/*
 function openModal(i){
   const p=products[i];
   modal.style.display="flex";
@@ -114,8 +115,40 @@ function openModal(i){
   const msg=`Hi, I'm interested in the ${p.title_en}`;
   waBtn.onclick=()=>window.open(`https://wa.me/918978569063?text=${encodeURIComponent(msg)}`);
 }
-
 function closeModal(){modal.style.display="none"}
+*/
+
+// Function to open the modal with dynamic data
+function openModal(imageSrc, title, price) {
+    const modal = document.querySelector('.modal');
+    const modalContent = document.querySelector('.modal-content');
+
+    // Injecting dynamic data into the modal
+    modalContent.innerHTML = `
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img src="${imageSrc}" alt="${title}" style="width:100%; border-radius:8px; margin-bottom:15px;">
+        <h2 class="gold">${title}</h2>
+        <p>Custom designs available in 22k Gold</p>
+        <a href="https://wa.me/91XXXXXXXXXX?text=Hi, I am interested in the ${title}" 
+           class="whatsapp-btn" target="_blank">
+           <i class="fab fa-whatsapp"></i> Inquire on WhatsApp
+        </a>
+    `;
+    
+    modal.style.display = 'flex';
+}
+
+function closeModal() {
+    document.querySelector('.modal').style.display = 'none';
+}
+
+// Close modal when clicking outside the box
+window.onclick = function(event) {
+    const modal = document.querySelector('.modal');
+    if (event.target == modal) {
+        closeModal();
+    }
+}
 
 /* Testimonials rotation */
 /*
