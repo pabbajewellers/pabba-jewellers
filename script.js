@@ -48,6 +48,23 @@ function openModal(i){
   modalDesc.innerText=p["desc_"+currentLang];
   const msg=`Hi, I'm interested in the ${p.title_en}`;
   waBtn.onclick=()=>window.open(`https://wa.me/918978569063?text=${encodeURIComponent(msg)}`);
+
+  /* Testimonials rotation */
+const testimonials=document.querySelectorAll('.testimonial');
+let tIndex=0;
+setInterval(()=>{
+  testimonials[tIndex].classList.remove('active');
+  tIndex=(tIndex+1)%testimonials.length;
+  testimonials[tIndex].classList.add('active');
+},4000);
+
+/* Category filtering scroll fix */
+function filterCategory(cat){
+  const filtered=products.filter(p=>p.category===cat);
+  renderProducts(filtered);
+  document.getElementById("catalog").scrollIntoView({behavior:"smooth"});
+}
+
 }
 
 function closeModal(){modal.style.display="none";}
