@@ -202,6 +202,7 @@ section {
 }
 
 /* --- MODAL & TESTIMONIALS --- */
+/*
 .modal {
     display: none;
     position: fixed;
@@ -233,6 +234,48 @@ section {
     cursor: pointer;
     text-decoration: none;
     display: inline-block;
+}
+*/
+/* Fix the messed up WhatsApp icon and Popup */
+.modal-content {
+    background: #111;
+    padding: 30px;
+    border: 1px solid #D4AF37;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 450px;
+    position: relative;
+    text-align: center;
+    animation: fadeIn 0.3s ease;
+}
+
+.close {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    font-size: 30px;
+    color: #D4AF37;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.whatsapp-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: #25D366;
+    color: white;
+    padding: 12px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 20px;
+    font-weight: 600;
+    transition: background 0.3s;
+}
+
+.whatsapp-btn:hover {
+    background: #128C7E;
 }
 
 footer {
