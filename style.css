@@ -390,58 +390,6 @@ footer {
     letter-spacing: 2px;
 }
 
-/* --- MOBILE RESPONSIVE FIXES --- */
-@media (max-width: 768px) {
-    /* 1. Shrink the Header */
-    .navbar {
-        padding: 10px 5%; /* Smaller padding */
-        height: 60px; /* Force a shorter height */
-    }
-
-    /* 2. Hide links by default (Hamburger Menu prep) */
-    .nav-links {
-        position: fixed;
-        top: 60px; /* Starts right below the navbar */
-        right: -100%; /* Hidden off-screen to the right */
-        flex-direction: column;
-        background: rgba(0, 0, 0, 0.95);
-        width: 70%; /* Takes up less width */
-        height: 100vh;
-        gap: 20px;
-        padding: 40px;
-        transition: 0.3s ease-in-out;
-        backdrop-filter: blur(10px);
-        border-left: 1px solid rgba(212, 175, 55, 0.2);
-    }
-
-    /* 3. Show menu when active */
-    .nav-links.active {
-        right: 0;
-    }
-
-    /* 4. Fix Logo and Body Padding */
-    .logo h1 {
-        font-size: 1.1rem; /* Smaller logo for mobile */
-    }
-    
-    body {
-        padding-top: 60px; /* Match the new mobile navbar height */
-    }
-
-    /* 5. Create the Hamburger Button Style */
-    .menu-toggle {
-        display: block !important; /* Show only on mobile */
-        cursor: pointer;
-        color: #D4AF37;
-        font-size: 1.5rem;
-    }
-}
-
-/* Hide Hamburger on Desktop */
-.menu-toggle {
-    display: none;
-}
-
 .back-to-top {
     position: fixed;
     bottom: 20px; /* Small gap from bottom */
@@ -480,12 +428,85 @@ footer {
     transform: translateY(-3px);
 }
 
-/* Mobile adjustments for the button */
+
+
+/* --- MOBILE RESPONSIVE FIXES (768px and below) --- */
 @media (max-width: 768px) {
+    /* 1. Reset Body Padding to match the smaller mobile header */
+    body {
+        padding-top: 65px !important; 
+    }
+
+    /* 2. Shrink the Header Bar */
+    .navbar {
+        height: 65px;
+        padding: 0 5%;
+        background: rgba(0, 0, 0, 0.98); /* Solid black on mobile for clarity */
+    }
+
+    .logo h1 {
+        font-size: 1.1rem; /* Smaller text so it doesn't wrap */
+    }
+
+    .telugu-name {
+        font-size: 0.7rem;
+    }
+
+    /* 3. The Hamburger Menu Fix */
+    .menu-toggle {
+        display: block !important;
+        font-size: 1.5rem;
+        color: #D4AF37;
+        cursor: pointer;
+    }
+
+    /* 4. The Mobile Menu (Slide-out Drawer) */
+    .nav-links {
+        position: fixed;
+        top: 65px; /* Directly under the navbar */
+        right: -100%; /* Hidden off-screen */
+        width: 250px; /* Slimmer menu */
+        height: calc(100vh - 65px);
+        background: #000;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 40px 30px;
+        gap: 25px;
+        transition: 0.4s ease-in-out;
+        z-index: 999;
+        box-shadow: -5px 0 15px rgba(0,0,0,0.5);
+    }
+
+    .nav-links.active {
+        right: 0; /* Slides into view */
+    }
+
+    /* 5. Section and Gap Fixes */
+    section {
+        padding: 40px 5%; /* Tighter spacing for mobile */
+    }
+
+    .section-header {
+        font-size: 1.5rem;
+        margin-bottom: 25px;
+    }
+
+    .hero {
+        height: 60vh; /* Shorter hero so content is visible sooner */
+    }
+
+    /* 6. Back to Top Button Mobile Specifics */
     .back-to-top {
-        bottom: 20px;
-        right: 20px;
-        width: 40px;
-        height: 40px;
+        bottom: 15px;
+        right: 15px;
+        width: 35px;
+        height: 35px;
+        font-size: 14px;
     }
 }
+
+/* Hide Hamburger by default on Desktop */
+.menu-toggle {
+    display: none;
+}
+
