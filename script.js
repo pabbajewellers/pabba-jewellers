@@ -394,6 +394,7 @@ function animateCounters() {
                 requestAnimationFrame(updateCount);
             } else {
                 element.innerText = counter.target + counter.suffix;
+                element.classList.add('sparkle-effect'); // Trigger the shimmer
             }
         };
 
