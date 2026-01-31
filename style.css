@@ -1,62 +1,11 @@
-:root {
-    --bg-dark: #0a0a0a;
-    --gold: #D4AF37;
-    --gold-glow: rgba(212, 175, 55, 0.3);
-    --text-light: #e0e0e0;
-}
-
-body {
-    margin: 0;
-    background-color: var(--bg-dark);
-    color: var(--text-light);
-    font-family: 'Montserrat', sans-serif;
-    overflow-x: hidden;
-}
-
-h1, h2, h3 {
-    font-family: 'Cinzel', serif;
-    color: var(--gold);
-}
-
-/* Luxury Sparkle Animation */
-@keyframes sparkle {
-    0%, 100% { opacity: 0; transform: scale(0); }
-    50% { opacity: 1; transform: scale(1.2); }
-}
-
-/* Hero Section with Parallax feel */
-.hero {
-    height: 100vh;
-    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('images/hero-bg.jpg');
-    background-size: cover;
-    background-attachment: fixed;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-}
-
-.btn.primary {
-    background: var(--gold);
-    color: black;
-    padding: 15px 30px;
-    text-decoration: none;
-    font-weight: bold;
-    border-radius: 2px;
-    transition: 0.3s;
-    box-shadow: 0 0 15px var(--gold-glow);
-}
-
-.btn.primary:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 0 25px var(--gold);
-}
-
-/* WhatsApp Float */
-.whatsapp-float {
-    position: fixed;
-    bottom: 40px;
-    right: 40px;
-    width: 60px;
-    z-index: 100;
-}
+body{font-family:Poppins,sans-serif;background:#0b0b0b;color:#eee;margin:0}
+.gold{color:#e6c15a;text-shadow:0 0 8px rgba(230,193,90,.35)}
+.navbar{display:flex;justify-content:space-between;padding:20px;background:#000}
+.hero{height:90vh;background:url("images/hero.jpg") center/cover;display:flex;align-items:center;justify-content:center;text-align:center}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:25px;padding:40px}
+.card{background:#151515;border-radius:12px;overflow:hidden;cursor:pointer}
+.card img{width:100%;height:240px;object-fit:cover}
+.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);align-items:center;justify-content:center}
+.modal-content{background:#111;padding:20px;border-radius:12px;display:flex;gap:20px;width:80%}
+.close{position:absolute;right:20px;top:10px;cursor:pointer}
+.whatsapp-btn{background:#25D366;color:#fff;padding:10px;border:none}
