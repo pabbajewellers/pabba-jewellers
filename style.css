@@ -231,3 +231,22 @@ footer {
     font-size: 0.9rem;
     color: #666;
 }
+
+.testimonial {
+    transition: opacity 0.5s ease-in-out;
+    opacity: 1; /* Default for active */
+    padding: 20px;
+    min-height: 150px;
+}
+
+.testimonial-text {
+    font-style: italic;
+    font-size: 1.2rem;
+    color: #D4AF37;
+    margin-bottom: 10px;
+}
+
+.stars {
+    color: #e6c15a;
+    letter-spacing: 2px;
+}
