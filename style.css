@@ -1,75 +1,86 @@
-body{font-family:Poppins,sans-serif;background:#0b0b0b;color:#eee;margin:0}
-.gold{color:#e6c15a;text-shadow:0 0 8px rgba(230,193,90,.35)}
+/* --- GLOBAL STYLES --- */
+body {
+    font-family: 'Poppins', 'Montserrat', sans-serif;
+    background: #0b0b0b;
+    color: #eee;
+    margin: 0;
+    padding-top: 80px; /* Space for the fixed navbar */
+    overflow-x: hidden;
+}
 
-/*
-.navbar{display:flex;justify-content:space-between;align-items:center;padding:15px 8%;background:#000;flex-wrap:wrap}
-.nav-links{display:flex;gap:15px;flex-wrap:wrap}
+.gold {
+    color: #e6c15a;
+    text-shadow: 0 0 8px rgba(230, 193, 90, .35);
+}
 
-.navbar{position:fixed;top:0;width:100%;display:flex;justify-content:space-between;padding:15px 8%;background:#000;z-index:1000}
-.nav-links a{margin:0 10px;color:#fff;text-decoration:none}
-.nav-links button{margin-left:10px}
-*/
-/* 1. Make the Header Sticky */
+/* --- STICKY NAVBAR --- */
 .navbar {
     display: flex;
-    justify-content: space-between; /* Keeps Logo left and Menu right */
+    justify-content: space-between;
     align-items: center;
-    padding: 15px 8%;
-    background: rgba(0, 0, 0, 0.9); /* Slight transparency for a modern feel */
-    backdrop-filter: blur(10px);    /* Blurs content behind for luxury glass effect */
-    
-    position: fixed;   /* Makes it sticky */
+    padding: 20px 8%; /* Slightly taller initially */
+    background: rgba(0, 0, 0, 0.4); /* Very transparent at top */
+    backdrop-filter: blur(0px); 
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 1000;      /* Ensures it stays above all other content */
-    box-sizing: border-box; 
-    border-bottom: 1px solid rgba(212, 175, 55, 0.2); /* Subtle gold border line */
+    z-index: 1000;
+    box-sizing: border-box;
+    transition: all 0.5s ease; /* Smooth transition for scroll effect */
 }
 
-/* 2. Push the Menu to the Right */
+/* Scroll Effect State */
+.navbar.scrolled {
+    padding: 12px 8%; /* Shrinks slightly */
+    background: rgba(0, 0, 0, 0.95); /* Becomes solid black */
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(230, 193, 90, 0.3);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+}
+
+/* --- LOGO & NAVIGATION --- */
+.logo h1 {
+    font-family: 'Cinzel', serif; /* Recommended luxury font */
+    font-size: 1.4rem;
+    margin: 0;
+    color: #D4AF37;
+    letter-spacing: 2px;
+}
+
+.telugu-name {
+    display: block;
+    font-size: 0.8rem;
+    color: #888;
+    margin-top: -5px;
+}
+
 .nav-links {
     display: flex;
     gap: 30px;
     list-style: none;
     margin: 0;
     padding: 0;
-    margin-left: auto; /* This ensures it stays pushed to the right side */
+    margin-left: auto; /* Pushes to the right */
 }
-
-/* 3. Important: Prevent Hero content from hiding under the sticky header */
-body {
-    padding-top: 80px; /* Adjust this to match your navbar height */
-}
-
-/* 1. Remove default link styles */
-/*
-.nav-links {
-    list-style: none; /* Removes the bullet points */
-    display: flex;
-    gap: 30px; /* Increased gap for a more "breathable" luxury feel */
-}
-*/
 
 .nav-links a {
-    text-decoration: none; /* Removes the underline */
-    color: #e0e0e0; /* A soft off-white/silver */
-    font-family: 'Montserrat', sans-serif;
-    font-size: 0.9rem;
+    text-decoration: none;
+    color: #e0e0e0;
+    font-size: 0.85rem;
     font-weight: 400;
-    letter-spacing: 1.5px; /* Added spacing for "premium" look */
+    letter-spacing: 1.5px;
     text-transform: uppercase;
-    transition: all 0.4s ease; /* Smooth transition for the hover effect */
+    transition: all 0.4s ease;
     position: relative;
 }
 
-/* 2. The Interaction: Subtle Gold Glow & Underline on Hover */
 .nav-links a:hover {
-    color: #D4AF37; /* Changes to Gold on hover */
-    text-shadow: 0 0 8px rgba(212, 175, 55, 0.4); /* Subtle gold glow */
+    color: #D4AF37;
+    text-shadow: 0 0 8px rgba(212, 175, 55, 0.4);
 }
 
-/* 3. Modern Underline Effect (Animated) */
+/* Underline Animation */
 .nav-links a::after {
     content: '';
     position: absolute;
@@ -82,49 +93,124 @@ body {
 }
 
 .nav-links a:hover::after {
-    width: 100%; /* Line grows from left to right on hover */
+    width: 100%;
 }
 
-.logo h1 {
-    font-size: 1.4rem;
-    margin: 0;
-    color: #D4AF37;
-    letter-spacing: 2px;
+/* --- SECTIONS --- */
+.hero {
+    height: 85vh;
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("images/hero.jpg") center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
-.telugu-name {
-    display: block;
-    font-size: 0.8rem;
-    color: #888; /* Dimmer than the main title to show hierarchy */
-    margin-top: -5px;
+.trust {
+    display: flex;
+    justify-content: space-around;
+    background: #111;
+    padding: 40px 0;
+    text-align: center;
+    border-top: 1px solid #222;
 }
 
-.hero{height:90vh;background:url("images/hero.jpg") center/cover;display:flex;align-items:center;justify-content:center;text-align:center;margin-top:60px}
+.trust h3 {
+    color: #e6c15a;
+    font-size: 28px;
+    margin-bottom: 5px;
+}
 
-.trust{display:flex;justify-content:space-around;background:#111;padding:40px 0;text-align:center}
-.trust h3{color:#e6c15a;font-size:28px}
+section {
+    padding: 100px 8%;
+}
 
-section{padding:80px 8%}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:25px}
-.card{background:#151515;border-radius:12px;overflow:hidden;cursor:pointer}
-.card img{width:100%;height:240px;object-fit:cover}
-.card h3{text-align:center;padding:10px}
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
 
-.about,.custom{text-align:center;max-width:800px;margin:auto}
+.card {
+    background: #151515;
+    border-radius: 4px; /* More angular is usually more luxury than round */
+    overflow: hidden;
+    cursor: pointer;
+    border: 1px solid #222;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
 
-.testimonials{text-align:center;background:#111}
-.testimonial{display:none}
-.testimonial.active{display:block}
+.card:hover {
+    transform: translateY(-10px);
+    border-color: #D4AF37;
+}
 
-.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);align-items:center;justify-content:center}
-/*
-.modal-content{background:#111;padding:20px;border-radius:12px;display:flex;gap:20px;width:80%}
-*/
-.modal-content{background:#111;padding:20px;border-radius:12px;width:400px;position:relative;text-align:center}
-.close{position:absolute;right:10px;top:5px;cursor:pointer;color:#fff}
-.whatsapp-btn{background:#25D366;color:#fff;padding:10px;border:none}
+.card img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    filter: grayscale(20%);
+    transition: 0.5s;
+}
 
-.pagination{text-align:center;margin-top:30px}
-.pagination button{margin:5px;padding:8px 12px}
+.card:hover img {
+    filter: grayscale(0%);
+    transform: scale(1.05);
+}
 
-footer{text-align:center;padding:20px;background:#000;margin-top:40px}
+.card h3 {
+    text-align: center;
+    padding: 15px;
+    font-size: 1.1rem;
+    font-weight: 400;
+}
+
+.about, .custom {
+    text-align: center;
+    max-width: 800px;
+    margin: auto;
+    line-height: 1.8;
+}
+
+/* --- MODAL & TESTIMONIALS --- */
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.9);
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+}
+
+.modal-content {
+    background: #111;
+    padding: 40px;
+    border-radius: 4px;
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+    text-align: center;
+    border: 1px solid #D4AF37;
+}
+
+.whatsapp-btn {
+    background: #25D366;
+    color: #fff;
+    padding: 12px 25px;
+    border: none;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+}
+
+footer {
+    text-align: center;
+    padding: 40px;
+    background: #000;
+    border-top: 1px solid #222;
+    font-size: 0.9rem;
+    color: #666;
+}
