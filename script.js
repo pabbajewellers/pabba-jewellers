@@ -141,6 +141,65 @@ setInterval(()=>{
 
 async function loadTestimonials() {
     const container = document.getElementById('testimonial-container');
+    if (!container) return;
+
+    try {
+        // Use a relative path for GitHub Pages
+        const response = await fetch('./testimonials.json'); 
+        if (!response.ok) throw new Error("Could not load JSON");
+        
+        const data = await response.json();
+        
+        // 1. Inject the HTML
+        container.innerHTML = data.map((item, index) => `
+            <div class="testimonial ${index === 0 ? 'active' : ''}" style="display: ${index === 0 ? 'block' : 'none'}">
+                <p class="testimonial-text">"${item.text}"</p>
+                <h4 class="testimonial-author">- ${item.name}</h4>
+                <div class="stars">${item.rating}</div>
+            </div>
+        `).join('');
+
+        // 2. Start the animation ONLY after elements exist
+        if (data.length > 1) {
+            startCarousel();
+        }
+    } catch (error) {
+        console.error("Testimonial Error:", error);
+        container.innerHTML = "<p>Trusted by hundreds of families in Hyderabad.</p>";
+    }
+}
+
+function startCarousel() {
+    let current = 0;
+    
+    setInterval(() => {
+        const items = document.querySelectorAll('.testimonial');
+        if (items.length === 0) return;
+
+        // Hide current
+        items[current].style.opacity = '0';
+        setTimeout(() => {
+            items[current].style.display = 'none';
+            items[current].classList.remove('active');
+
+            // Move to next
+            current = (current + 1) % items.length;
+
+            // Show next
+            items[current].style.display = 'block';
+            items[current].classList.add('active');
+            // Small delay to trigger fade-in
+            setTimeout(() => { items[current].style.opacity = '1'; }, 50);
+        }, 500); // Half-second fade out
+    }, 4000);
+}
+
+// Call the function
+loadTestimonials();
+
+/*
+async function loadTestimonials() {
+    const container = document.getElementById('testimonial-container');
     try {
         const response = await fetch('testimonials.json');
         const data = await response.json();
@@ -175,6 +234,7 @@ function startCarousel() {
 }
 
 loadTestimonials();
+*/
 
 /* Category filtering scroll fix */
 function filterCategory(cat){
