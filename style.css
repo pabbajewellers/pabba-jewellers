@@ -122,7 +122,7 @@ body {
     justify-content: center;
     text-align: center;
 }
-
+/*
 .trust {
     display: flex;
     justify-content: space-around;
@@ -137,6 +137,7 @@ body {
     font-size: 28px;
     margin-bottom: 5px;
 }
+*/
 /*
 section {
     padding: 100px 8%;
@@ -428,7 +429,32 @@ footer {
     transform: translateY(-3px);
 }
 
+.trust {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: #111;
+    padding: 60px 8%;
+    text-align: center;
+    border-top: 1px solid #222;
+    border-bottom: 1px solid #222;
+}
 
+.stat-box h3 {
+    font-size: 2.5rem;
+    color: #D4AF37;
+    margin: 0;
+    font-family: 'Cinzel', serif; /* Use your luxury font here */
+    text-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+}
+
+.stat-box p {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.8rem;
+    color: #888;
+    margin-top: 5px;
+}
 
 /* --- MOBILE RESPONSIVE FIXES (768px and below) --- */
 @media (max-width: 768px) {
@@ -502,6 +528,14 @@ footer {
         width: 35px;
         height: 35px;
         font-size: 14px;
+    }
+
+    .trust {
+        flex-direction: column;
+        gap: 40px;
+    }
+    .stat-box h3 {
+        font-size: 2rem;
     }
 }
 
