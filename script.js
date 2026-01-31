@@ -3,6 +3,15 @@ let products=[];
 let currentPage=1;
 const perPage=6;
 
+window.addEventListener('scroll', function() {
+    const nav = document.querySelector('.navbar');
+    if (window.scrollY > 50) {
+        nav.classList.add('scrolled');
+    } else {
+        nav.classList.remove('scrolled');
+    }
+});
+
 /* Load Collections */
 /*
 fetch("collections.json")
