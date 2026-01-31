@@ -4,60 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Pabba Jewellers & Co.</title>
-
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
-
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:Poppins,sans-serif;background:#0b0b0b;color:#eee}
-h1,h2,h3{font-family:'Playfair Display',serif}
-
-/* BETTER GOLD HEADINGS */
-.gold{
-  color:#e6c15a;
-  text-shadow:0 0 8px rgba(230,193,90,.35);
-}
-
-/* NAV */
-.navbar{position:fixed;width:100%;padding:18px 8%;display:flex;justify-content:space-between;background:rgba(0,0,0,.75);backdrop-filter:blur(10px);z-index:1000}
-.navbar a{color:#fff;margin-left:20px;text-decoration:none}
-.navbar a:hover{color:#e6c15a}
-
-/* HERO */
-.hero{height:100vh;background:url("https://images.unsplash.com/photo-1606760227091-3dd870d97f1d") center/cover;display:flex;align-items:center;justify-content:center;position:relative;text-align:center}
-.hero::before{content:"";position:absolute;inset:0;background:rgba(0,0,0,.65)}
-.hero-content{position:relative}
-.btn{padding:12px 28px;background:#e6c15a;border:none;border-radius:30px;font-weight:600;cursor:pointer}
-
-section{padding:80px 8%}
-.trust{display:flex;justify-content:space-around;background:#111;text-align:center}
-
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:25px;margin-top:40px}
-.card{background:#151515;border-radius:12px;overflow:hidden;cursor:pointer;position:relative;transition:.3s}
-.card img{width:100%;height:240px;object-fit:cover}
-.card:hover{transform:translateY(-6px);box-shadow:0 0 25px rgba(230,193,90,.4)}
-.card h3{padding:12px;font-size:16px}
-
-/* MODAL */
-.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:2000;align-items:center;justify-content:center}
-.modal-content{background:#111;max-width:800px;width:90%;border-radius:14px;display:flex;gap:20px;padding:20px;position:relative}
-.modal img{width:45%;border-radius:10px}
-.modal-details p{font-size:14px;margin:6px 0;color:#ccc}
-.close{position:absolute;top:12px;right:16px;font-size:22px;cursor:pointer}
-
-/* WHATSAPP BUTTON */
-.whatsapp-btn{
-  margin-top:12px;
-  padding:10px 16px;
-  background:#25D366;
-  color:#fff;
-  border:none;
-  border-radius:6px;
-  cursor:pointer;
-}
-
-footer{text-align:center;padding:30px;background:#000;color:#888}
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -65,38 +13,20 @@ footer{text-align:center;padding:30px;background:#000;color:#888}
 <div class="navbar">
   <h3 class="gold">Pabba Jewellers & Co.</h3>
   <div>
-    <a href="#collections">Collections</a>
-    <a href="#contact">Visit</a>
+    <button id="langToggle">తెలుగు</button>
   </div>
 </div>
 
 <section class="hero">
   <div class="hero-content">
-    <h1 class="gold">Timeless Elegance. Crafted for You.</h1>
-    <p>Hyderabad’s trusted jewellery destination</p>
-    <button class="btn">Explore Jewellery</button>
+    <h1 class="gold" data-en="Timeless Elegance. Crafted for You." data-te="నిత్యమైన అందం. మీకోసం రూపొందించబడింది."></h1>
   </div>
 </section>
 
-<section class="trust">
-  <div>483+ Happy Customers</div>
-  <div>4.3★ Rated</div>
-  <div>Custom Designs</div>
-  <div>Trusted Experts</div>
-</section>
-
 <section id="collections">
-  <h2 class="gold">Signature Collections</h2>
+  <h2 class="gold" data-en="Signature Collections" data-te="మా ప్రత్యేక కలెక్షన్స్"></h2>
   <div class="grid" id="productGrid"></div>
 </section>
-
-<section id="contact">
-  <h2 class="gold">Visit Our Store</h2>
-  <p>Ganesh Nagar, Ramanthapur, Hyderabad</p>
-  <p>📞 +91 89785 69063</p>
-</section>
-
-<footer>© 2026 Pabba Jewellers & Co.</footer>
 
 <!-- MODAL -->
 <div class="modal" id="modal">
@@ -105,75 +35,12 @@ footer{text-align:center;padding:30px;background:#000;color:#888}
     <img id="modalImg">
     <div class="modal-details">
       <h3 id="modalTitle" class="gold"></h3>
-      <p id="modalType"></p>
-      <p id="modalMaterial"></p>
-      <p id="modalWeight"></p>
-      <p id="modalPrice"></p>
       <p id="modalDesc"></p>
-      <button class="whatsapp-btn" id="waBtn">Enquire on WhatsApp</button>
+      <button class="whatsapp-btn" id="waBtn">WhatsApp</button>
     </div>
   </div>
 </div>
 
-<script>
-/* ================= ADMIN EDITABLE JEWELLERY LIST ================= */
-const products = [
-{
-  title:"Bridal Gold Necklace Set",
-  img:"https://images.unsplash.com/photo-1602752250015-52934bc45613",
-  type:"Bridal Collection",
-  material:"22K Gold",
-  weight:"85–95 grams",
-  price:"Price on Request",
-  desc:"Traditional bridal necklace set crafted with intricate detailing."
-},
-{
-  title:"Diamond Statement Necklace",
-  img:"https://images.unsplash.com/photo-1617038260897-41a1f14a3f1c",
-  type:"Diamond Jewellery",
-  material:"18K Gold + Certified Diamonds",
-  weight:"30 grams",
-  price:"Based on diamond quality",
-  desc:"Luxury diamond necklace for premium occasions."
-},
-{
-  title:"Classic Gold Ring",
-  img:"https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f",
-  type:"Daily Wear Ring",
-  material:"22K Gold",
-  weight:"6–8 grams",
-  price:"Starting ₹45,000",
-  desc:"Minimal and elegant everyday gold ring."
-}
-];
-
-/* Auto render products */
-const grid=document.getElementById("productGrid");
-products.forEach((p,i)=>{
-  grid.innerHTML+=`<div class="card" onclick="openModal(${i})">
-    <img src="${p.img}">
-    <h3>${p.title}</h3>
-  </div>`;
-});
-
-function openModal(i){
-  const p=products[i];
-  modal.style.display="flex";
-  modalImg.src=p.img;
-  modalTitle.innerText=p.title;
-  modalType.innerText="Type: "+p.type;
-  modalMaterial.innerText="Material: "+p.material;
-  modalWeight.innerText="Weight: "+p.weight;
-  modalPrice.innerText="Price: "+p.price;
-  modalDesc.innerText=p.desc;
-
-  // WhatsApp prefilled message
-  const msg=`Hi Pabba Jewellers, I'm interested in the ${p.title}. Can you share more details?`;
-  waBtn.onclick=()=>window.open(`https://wa.me/918978569063?text=${encodeURIComponent(msg)}`);
-}
-
-function closeModal(){modal.style.display="none";}
-</script>
-
+<script src="script.js"></script>
 </body>
 </html>
