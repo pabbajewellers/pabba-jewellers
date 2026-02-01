@@ -272,6 +272,14 @@ section {
 
     .nav-links a { font-size: 1.3rem; font-weight: 500; }
 
+    #mobile-menu {
+        display: block !important;
+        cursor: pointer !important;
+        pointer-events: auto !important;
+        position: relative !important;
+        z-index: 9999 !important; /* Forces it to the absolute front */
+    }
+
     .close-menu {
         display: block !important;
         position: absolute;
@@ -279,8 +287,9 @@ section {
         right: 25px;
         font-size: 2.8rem;
         color: #D4AF37;
-        cursor: pointer;
-        z-index: 1003;
+        cursor: pointer !important;
+        pointer-events: auto !important;
+        z-index: 9999 !important;
         padding: 10px;
     }
 
