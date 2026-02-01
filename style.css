@@ -1,15 +1,19 @@
 /* --- GLOBAL STYLES --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
     font-family: 'Poppins', 'Montserrat', sans-serif;
     background: #0b0b0b;
     color: #eee;
-    margin: 0;
     padding-top: 80px; 
     overflow-x: hidden;
-    scroll-behavior: smooth; /* Native smooth scroll for jump links */
+    scroll-behavior: smooth;
 }
 
-/* Fix for Sticky Header covering section titles */
 section {
     padding: 60px 8%;
     text-align: center;
@@ -33,47 +37,47 @@ section {
     left: 0;
     width: 100%;
     z-index: 1000;
-    box-sizing: border-box;
+    transition: all 0.3s ease;
 }
 
 .navbar.scrolled {
     padding: 12px 8%;
-    background: rgba(0, 0, 0, 0.95);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid rgba(230, 193, 90, 0.3);
     box-shadow: 0 5px 20px rgba(0,0,0,0.5);
 }
 
-/* --- LOGO & NAVIGATION --- */
+/* --- LOGO (FORCED UNIFORMITY) --- */
 .logo {
     display: flex;
     flex-direction: column;
     text-align: left;
+    text-decoration: none !important;
 }
 
 .logo h1 {
     font-family: 'Cinzel', serif !important;
     font-size: 1.3rem !important;
-    color: #D4AF37;
-    margin: 0;
-    /* This forces BOTH pages to be ALL CAPS */
-    text-transform: uppercase !important; 
+    color: #D4AF37 !important;
+    margin: 0 !important;
+    text-transform: uppercase !important; /* Forces All-Caps on index & catalog */
     letter-spacing: 2px;
+    line-height: 1.2;
 }
 
 .telugu-name {
     font-size: 0.75rem;
     color: #888;
-    text-transform: none !important; /* Keep Telugu script normal */
+    text-transform: none !important;
     margin-top: 2px;
 }
 
+/* --- NAVIGATION LINKS --- */
 .nav-links {
     display: flex;
     list-style: none;
     gap: 25px;
     align-items: center;
-    margin: 0;
 }
 
 .nav-links a {
@@ -82,12 +86,11 @@ section {
     text-transform: uppercase;
     font-size: 0.85rem;
     letter-spacing: 1px;
+    position: relative;
+    transition: 0.3s;
 }
 
-.nav-links a:hover {
-    color: #D4AF37 !important;
-    text-shadow: 0 0 8px rgba(212, 175, 55, 0.4);
-}
+.nav-links a:hover { color: #D4AF37 !important; }
 
 .nav-links a::after {
     content: '';
@@ -99,6 +102,26 @@ section {
 }
 
 .nav-links a:hover::after { width: 100%; }
+
+.lang-btn {
+    background: transparent;
+    border: 1px solid #D4AF37;
+    color: #D4AF37;
+    padding: 5px 12px;
+    cursor: pointer;
+    font-family: inherit;
+    transition: 0.3s;
+}
+
+.lang-btn:hover { background: #D4AF37; color: #000; }
+
+/* --- MOBILE MENU TOGGLE --- */
+.menu-toggle {
+    display: none;
+    font-size: 1.8rem;
+    color: #D4AF37;
+    cursor: pointer;
+}
 
 /* --- HERO & GRIDS --- */
 .hero {
@@ -179,6 +202,7 @@ section {
     display: flex; align-items: center; justify-content: center; gap: 10px;
     background: #25D366; color: #fff; padding: 14px; border: none;
     border-radius: 6px; width: 100%; font-weight: 600; cursor: pointer; margin-top: 20px;
+    text-decoration: none;
 }
 
 .back-to-top {
@@ -191,7 +215,7 @@ section {
 
 .back-to-top.show { opacity: 1; visibility: visible; }
 
-/* --- BREADCRUMB STYLING --- */
+/* --- BREADCRUMB --- */
 .breadcrumb {
     text-align: left;
     margin-bottom: 25px;
@@ -200,83 +224,61 @@ section {
     letter-spacing: 1px;
 }
 
-/* This prevents the catalog breadcrumb from looking like a default blue link */
 .breadcrumb a {
     color: #D4AF37 !important;
     text-decoration: none !important;
     text-transform: uppercase;
-    font-size: 0.75rem;
     font-weight: 500;
 }
 
-.breadcrumb a:hover {
-    color: #fff !important;
-}
+.breadcrumb a:hover { color: #fff !important; }
 
-.breadcrumb span {
-    color: #555;
-    margin: 0 5px;
-}
-/* --- HAMBURGER VISIBILITY FIX --- */
-.menu-toggle {
-    display: none; /* Hidden on desktop */
-    font-size: 1.8rem;
-    color: #D4AF37;
-    cursor: pointer;
-    user-select: none;
-}
 /* --- RESPONSIVE MEDIA QUERIES --- */
-
-/* Mobile Phones (up to 768px) */
 @media (max-width: 768px) {
-    body { padding-top: 65px !important; }
-    .navbar {
-        padding: 0 15px; /* Tighter padding for more horizontal room */
-        justify-content: flex-start; /* Align items to the left */
-        gap: 10px;    
-    }
-    .logo {
-        order: 1;
-    }
-    .logo h1 {
-        font-size: 1.05rem; /* Precise size to prevent overlap */
-    }
+    body { padding-top: 70px !important; }
     
-    .menu-toggle {
-        display: block !important; /* Show hamburger on mobile */
+    .navbar {
+        padding: 0 20px;
+        height: 70px;
+        justify-content: space-between;
     }
 
-   .nav-links {
+    .logo h1 { font-size: 1.1rem !important; }
+
+    .menu-toggle {
+        display: block !important;
+        z-index: 1001;
+    }
+
+    .nav-links {
         position: fixed;
-        top: 70px; /* Adjust based on your header height */
-        right: -100%; /* Hide off-screen */
-        background: #111;
-        width: 250px;
+        top: 0;
+        right: -100%; 
+        background: #0b0b0b;
+        width: 280px;
         height: 100vh;
         flex-direction: column;
-        padding: 40px 20px;
-        transition: 0.4s ease;
-        box-shadow: -5px 0 15px rgba(0,0,0,0.5);
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+        transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: -10px 0 30px rgba(0,0,0,0.8);
+        z-index: 1000;
     }
-    .nav-links.active {
-        right: 0; /* Slide in */
-    }
-    /* Ensure the button inside the menu doesn't look weird */
-    .nav-links li {
-        width: 100%;
-        text-align: left;
-    }
+
+    .nav-links.active { right: 0; }
+
+    .nav-links a { font-size: 1.2rem; }
+
     .hero { height: 60vh; }
     .trust { flex-direction: column; gap: 40px; }
-    
-    /* Mobile Modal Fix: Back to stacked view */
+
     .modal-body { flex-direction: column; text-align: center; }
     #modalImg { width: 100%; max-height: 300px; }
     .modal-details { width: 100%; }
 }
 
-/* Small Catalog Grid (2 columns) */
 @media (max-width: 600px) {
     .catalog-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-    .catalog-section { padding: 80px 3% 40px; }
+    .catalog-section { padding: 100px 3% 40px; }
 }
