@@ -1,20 +1,27 @@
-/* --- GLOBAL VARIABLES: THE SINGLE SOURCE OF TRUTH --- */
+/* ==========================================================================
+   1. GLOBAL VARIABLES (THE SINGLE SOURCE OF TRUTH)
+   ========================================================================== */
 :root {
     --primary-gold: #D4AF37;
+    --gold-glow: rgba(212, 175, 55, 0.3);
     --text-white: #eeeeee;
     --text-gray: #999999;
     --bg-black: #0b0b0b;
+    --bg-card: #151515;
     
     /* Font Families */
     --heading-font: 'Cinzel', serif;
     --body-font: 'Poppins', sans-serif;
     
-    /* Unified Spacing */
+    /* Unified Spacing & Transitions */
     --letter-spacing-gold: 3px;
     --letter-spacing-ui: 1px;
+    --transition-smooth: 0.3s ease;
 }
 
-/* --- BASE STYLES --- */
+/* ==========================================================================
+   2. BASE & RESET STYLES
+   ========================================================================== */
 * {
     margin: 0;
     padding: 0;
@@ -37,24 +44,37 @@ body {
     flex-direction: column;
 }
 
-/* --- UNIFIED HEADINGS (SITE-WIDE) --- */
-h1, h2, h3, .gold-title, .stat-box h3, .card h3 {
+/* Push footer to bottom logic */
+main, section, .catalog-section {
+    flex: 1 0 auto;
+}
+
+/* ==========================================================================
+   3. UNIFIED TYPOGRAPHY (SITE-WIDE UNIFORMITY)
+   ========================================================================== */
+h1, h2, h3, h4, .gold-title, .stat-box h3, .card h3, .product-info h4 {
     font-family: var(--heading-font) !important;
     font-weight: 400 !important;
     text-transform: uppercase;
     letter-spacing: var(--letter-spacing-gold);
     color: var(--primary-gold);
-    text-shadow: none !important; /* Removes the "bold" glow effect */
+    text-shadow: none !important; /* Forces professional non-bold look */
 }
 
-section {
-    padding: 60px 8%;
+section h2 {
+    font-size: 2.2rem;
+    margin-bottom: 50px;
     text-align: center;
-    scroll-margin-top: 80px;
-    flex: 1 0 auto; /* Pushes footer to bottom */
 }
 
-/* --- STICKY NAVBAR --- */
+p {
+    font-family: var(--body-font);
+    font-size: 0.95rem;
+}
+
+/* ==========================================================================
+   4. NAVIGATION BAR
+   ========================================================================== */
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -66,27 +86,28 @@ section {
     left: 0;
     width: 100%;
     z-index: 1000;
-    transition: all 0.3s ease;
+    transition: var(--transition-smooth);
 }
 
 .navbar.scrolled {
     padding: 12px 8%;
     backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+    border-bottom: 1px solid var(--gold-glow);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.5);
 }
 
-/* --- LOGO LOGIC --- */
+/* Logo Styling */
 .logo {
     display: flex;
     flex-direction: column;
-    text-align: left;
     text-decoration: none !important;
 }
 
 .logo h1 {
     font-size: 1.25rem !important;
     margin: 0 !important;
-    line-height: 1.2;
+    line-height: 1.1;
+    letter-spacing: 3px !important;
 }
 
 .telugu-name {
@@ -95,14 +116,14 @@ section {
     color: var(--text-gray);
     font-weight: 300;
     letter-spacing: var(--letter-spacing-ui);
-    text-transform: none !important;
+    margin-top: 4px;
 }
 
-/* --- NAVIGATION LINKS --- */
+/* Desktop Menu */
 .nav-links {
     display: flex;
     list-style: none;
-    gap: 25px;
+    gap: 30px;
     align-items: center;
 }
 
@@ -113,104 +134,249 @@ section {
     font-size: 0.85rem;
     letter-spacing: var(--letter-spacing-ui);
     position: relative;
-    transition: 0.3s;
+    transition: var(--transition-smooth);
 }
 
-.nav-links a:hover { color: var(--primary-gold) !important; }
+.nav-links a:hover {
+    color: var(--primary-gold) !important;
+}
 
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0; height: 1px;
+    bottom: -5px; left: 0;
+    background-color: var(--primary-gold);
+    transition: width 0.4s ease;
+}
+
+.nav-links a:hover::after { width: 100%; }
+
+/* Language Button */
 .lang-btn {
     background: transparent;
     border: 1px solid var(--primary-gold);
     color: var(--primary-gold);
-    padding: 5px 12px;
+    padding: 6px 15px;
     cursor: pointer;
     font-family: var(--body-font);
+    font-size: 0.75rem;
     text-transform: uppercase;
-    transition: 0.3s;
+    transition: var(--transition-smooth);
 }
 
-.lang-btn:hover { background: var(--primary-gold); color: #000; }
+.lang-btn:hover {
+    background: var(--primary-gold);
+    color: #000;
+}
 
-/* --- GRID & CARD UNIFORMITY --- */
+/* ==========================================================================
+   5. GRIDS & CARDS (COLLECTIONS & CATALOG)
+   ========================================================================== */
 .grid, .catalog-grid {
     display: grid;
     gap: 30px;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-}
-
-#collectionsGrid a, #catalogGrid a {
-    text-decoration: none !important;
-    color: inherit !important;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 }
 
 .card, .product-card {
-    background: #151515;
+    background: var(--bg-card);
     border: 1px solid #222;
     border-radius: 4px;
     overflow: hidden;
-    transition: 0.3s ease;
+    cursor: pointer;
+    transition: transform 0.4s ease, border-color 0.4s ease;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none !important;
 }
 
 .card:hover, .product-card:hover {
+    transform: translateY(-10px);
     border-color: var(--primary-gold);
-    transform: translateY(-5px);
 }
 
 .card img, .product-card img {
     width: 100%;
-    height: 280px;
+    height: 320px;
     object-fit: cover;
+    filter: grayscale(15%);
+    transition: 0.5s;
 }
 
-/* --- TRUST & STATS --- */
+.card:hover img { filter: grayscale(0%); transform: scale(1.05); }
+
+.product-info {
+    padding: 20px;
+    text-align: center;
+}
+
+.price-tag {
+    color: var(--text-gray);
+    font-size: 0.9rem;
+    margin: 10px 0;
+}
+
+/* ==========================================================================
+   6. TRUST SECTION & COUNTERS
+   ========================================================================== */
 .trust {
     display: flex;
     justify-content: space-around;
-    padding: 60px 8%;
+    padding: 80px 8%;
     background: #111;
+    border-top: 1px solid #222;
+    border-bottom: 1px solid #222;
+}
+
+.stat-box {
+    text-align: center;
+}
+
+.stat-box h3 {
+    font-size: 2.8rem !important;
+    margin-bottom: 8px;
 }
 
 .stat-box p {
-    font-family: var(--body-font);
-    font-size: 0.85rem;
     color: var(--text-gray);
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
-/* --- FOOTER (STICKY & CENTERED) --- */
-footer {
-    flex-shrink: 0;
-    text-align: center !important;
-    padding: 40px 20px;
-    background: #000;
-    color: var(--text-gray);
-    width: 100%;
-    font-size: 0.8rem;
-    font-family: var(--body-font);
-    border-top: 1px solid #222;
+/* ==========================================================================
+   7. MODAL (AMAZON STYLE)
+   ========================================================================== */
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
 }
 
-/* --- MODAL STYLE --- */
 .modal-content {
-    background: #151515;
-    padding: 30px;
-    border-radius: 12px;
+    background: var(--bg-card);
+    padding: 40px;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 900px;
+    position: relative;
     border: 1px solid var(--primary-gold);
 }
 
-/* --- MOBILE RESPONSIVENESS --- */
+.modal-body {
+    display: flex;
+    gap: 40px;
+    text-align: left;
+}
+
+#modalImg {
+    width: 45%;
+    max-height: 500px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.modal-details {
+    width: 55%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    font-size: 35px;
+    color: var(--primary-gold);
+    cursor: pointer;
+}
+
+/* ==========================================================================
+   8. BUTTONS & UTILITIES
+   ========================================================================== */
+.whatsapp-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    background: #25D366;
+    color: #fff;
+    padding: 15px;
+    border-radius: 4px;
+    font-weight: 600;
+    text-decoration: none;
+    margin-top: 25px;
+    transition: 0.3s;
+}
+
+.whatsapp-btn:hover { background: #1ebe57; transform: scale(1.02); }
+
+.back-to-top {
+    position: fixed; bottom: 30px; right: 30px;
+    width: 45px; height: 45px; background: var(--primary-gold);
+    color: #000; border-radius: 50%; border: none;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; z-index: 999; opacity: 0; visibility: hidden; transition: 0.3s;
+}
+
+.back-to-top.show { opacity: 1; visibility: visible; }
+
+/* ==========================================================================
+   9. FOOTER
+   ========================================================================== */
+footer {
+    flex-shrink: 0;
+    text-align: center !important;
+    padding: 60px 20px;
+    background: #000;
+    color: var(--text-gray);
+    width: 100%;
+    font-family: var(--body-font);
+    font-size: 0.85rem;
+    border-top: 1px solid #222;
+}
+
+/* ==========================================================================
+   10. MOBILE RESPONSIVE
+   ========================================================================== */
+.menu-toggle {
+    display: none;
+    font-size: 2rem;
+    color: var(--primary-gold);
+    cursor: pointer;
+}
+
 @media (max-width: 768px) {
-    .menu-toggle { display: block; font-size: 1.8rem; color: var(--primary-gold); cursor: pointer; }
+    .navbar { padding: 0 5%; height: 70px; }
+    .menu-toggle { display: block; order: 2; }
     
     .nav-links {
         position: fixed; top: 0; right: -100%; background: var(--bg-black);
-        width: 280px; height: 100vh; flex-direction: column;
-        padding-top: 100px; transition: 0.4s; z-index: 1001;
+        width: 300px; height: 100vh; flex-direction: column;
+        justify-content: flex-start; padding-top: 100px; gap: 35px;
+        transition: 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+        z-index: 1001;
+        box-shadow: -10px 0 30px rgba(0,0,0,0.5);
     }
     
     .nav-links.active { right: 0; }
     
-    /* Hide Hamburger when menu is active */
+    /* Hide Hamburger when drawer is open */
     .navbar:has(#nav-links.active) .menu-toggle {
         opacity: 0; visibility: hidden;
     }
+
+    .modal-body { flex-direction: column; }
+    #modalImg, .modal-details { width: 100%; }
+    
+    .trust { flex-direction: column; gap: 50px; }
+    
+    .catalog-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
 }
