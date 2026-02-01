@@ -33,6 +33,16 @@ body {
     flex-direction: column;
 }
 
+/* --- THE GAP FIX (Catalog Specific) --- */
+/* This removes the 70px gap only on the catalog page */
+body.catalog-page {
+    padding-top: 70px !important; /* Keep space for the fixed navbar */
+}
+
+body.catalog-page .catalog-section {
+    padding-top: 0px !important; /* Move content closer to the logo */
+}
+
 /* --- UNIFIED HEADINGS (SITE-LEVEL) --- */
 /* This forces the stylish J and uniform look across every section */
 h1, h2, h3, h4, .gold-title, .stat-box h3, .card h3 {
@@ -518,4 +528,43 @@ footer {
         gap: 30px;
         padding: 40px 0 !important;
     }
+}
+
+/* --- 2. THE BREADCRUMB "SHINE" --- */
+/* Making it look like luxury navigation rather than dull text */
+body.catalog-page .breadcrumb {
+    display: flex;
+    gap: 8px;
+    font-family: var(--body-font);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    margin-bottom: 25px !important;
+    text-transform: uppercase;
+    color: var(--text-gray); /* The "muted" parts */
+}
+
+body.catalog-page .breadcrumb a {
+    color: var(--primary-gold) !important; /* The "shining" part */
+    text-decoration: none;
+    transition: 0.3s ease;
+    border-bottom: 1px solid transparent;
+}
+
+body.catalog-page .breadcrumb a:hover {
+    border-bottom: 1px solid var(--primary-gold);
+}
+
+/* Adding a separator slash that looks elegant */
+body.catalog-page .breadcrumb span::before {
+    content: "/";
+    margin: 0 8px;
+    color: #444;
+}
+
+/* --- 3. TITLE REFINEMENT --- */
+body.catalog-page .catalog-section h2 {
+    margin-top: 0;
+    margin-bottom: 8px !important;
+    font-size: 1.8rem !important;
 }
