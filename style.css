@@ -239,15 +239,14 @@ section {
     
     .navbar {
         padding: 0 20px;
-        height: 70px;
-        justify-content: space-between;
+        justify-content: space-between; /* Force Logo and Hamburger to opposite ends */
     }
 
     .logo h1 { font-size: 1.1rem !important; }
 
     .menu-toggle {
         display: block !important;
-        z-index: 1001;
+        order: 2; /* Ensures it stays on the right */
     }
 
     .nav-links {
@@ -258,17 +257,28 @@ section {
         width: 280px;
         height: 100vh;
         flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 30px;
-        transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        box-shadow: -10px 0 30px rgba(0,0,0,0.8);
-        z-index: 1000;
+        justify-content: flex-start; /* Align items to top of drawer */
+        padding-top: 80px;         
+        gap: 20px;
+        transition: 0.4s ease-in-out;
+        /* box-shadow: -10px 0 30px rgba(0,0,0,0.8); */
+        z-index: 2000;
     }
 
     .nav-links.active { right: 0; }
 
     .nav-links a { font-size: 1.2rem; }
+
+    /* THE 'X' BUTTON STYLING */
+    .close-menu {
+        display: block;
+        position: absolute;
+        top: 20px;
+        right: 25px;
+        font-size: 2.5rem;
+        color: #D4AF37;
+        cursor: pointer;
+    }
 
     .hero { height: 60vh; }
     .trust { flex-direction: column; gap: 40px; }
@@ -281,4 +291,9 @@ section {
 @media (max-width: 600px) {
     .catalog-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
     .catalog-section { padding: 100px 3% 40px; }
+}
+
+/* Hide close button on desktop */
+@media (min-width: 769px) {
+    .close-menu { display: none; }
 }
