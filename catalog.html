@@ -1,61 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Catalog | Pabba Jewellers</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catalog | Pabba Jewellers & Co.</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Playfair+Display:wght@600&family=Poppins:wght@300;400;500&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="data:,">
 </head>
 <body>
-<!-- NAVBAR -->
-<nav class="navbar">
-  <div class="logo">
-        <h1 class="gold" data-en="Pabba Jewellers & Co." data-te="పబ్బా జ్యువెలర్స్ & Co.">Pabba Jewellers & Co.</h1>
-        <span class="telugu-name">పబ్బా జ్యువెలర్స్</span>
+
+    <nav class="navbar">
+        <div class="logo">
+            <h1 class="gold" data-en="Pabba Jewellers & Co." data-te="పబ్బా జ్యువెలర్స్ & Co.">Pabba Jewellers & Co.</h1>
+            <span class="telugu-name" data-en="Pabba Jewellers" data-te="పబ్బా జ్యువెలర్స్">పబ్బా జ్యువెలర్స్</span>
+        </div>
+        <div class="menu-toggle" id="mobile-menu">&#9776;</div>
+        <ul class="nav-links">
+            <li><a href="index.html" data-en="Home" data-te="హోమ్">Home</a></li>
+            <li><button id="lang-toggle" class="lang-btn">తెలుగు</button></li>
+        </ul>
+    </nav>
+
+    <section class="catalog-section">
+        <div class="breadcrumb">
+            <a href="index.html" data-en="Home" data-te="హోమ్">Home</a> <span>/</span> 
+            <span id="breadcrumbCategory" data-en="Catalog" data-te="కాటలాగ్">Catalog</span>
+        </div>
+        
+        <header class="catalog-header">
+            <h1 id="categoryTitle" class="gold" data-en="Our Collections" data-te="మా సేకరణలు">Our Collections</h1>
+            <p id="itemCount">Scanning inventory...</p>
+        </header>  
+
+        <div class="catalog-grid" id="catalogGrid"></div>
+    </section>
+
+    <div class="modal" id="productModal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">✕</span>
+            <div class="modal-body">
+                <img id="modalImg" src="" alt="Jewellery Image">
+                <div class="modal-details">
+                    <h3 id="modalTitle" class="gold"></h3>
+                    <p id="modalDesc"></p>
+                    <button id="waBtn" class="whatsapp-btn">
+                        <span>Enquire on WhatsApp</span>
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
-  <div class="menu-toggle" id="mobile-menu">&#9776;</div>
-  <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <button id="lang-toggle">తెలుగు</button>
-   </ul>
-</nav>
-<!--
-<section>
-  <h2 class="gold">Jewellery Catalog</h2>
-  <div class="grid" id="productGrid"></div>
-  <div class="pagination" id="pagination"></div>
-</section>
-<div class="modal" id="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeModal()">✕</span>
-    <img id="modalImg">
-    <h3 id="modalTitle" class="gold"></h3>
-    <p id="modalDesc"></p>
-    <button id="waBtn" class="whatsapp-btn">Enquire on WhatsApp</button>
-  </div>
-</div>
--->
-<section class="catalog-section">
-  <header class="catalog-header">
-      <h1 id="categoryTitle" class="gold">All Collections</h1>
-      <p id="itemCount">Loading items...</p>
-  </header>  
-  <div class="catalog-grid" id="catalogGrid"></div>
-</section>
-<!-- MODAL -->
-<div class="modal" id="productModal">
-   <div class="modal-content">
-      <span class="close" onclick="closeModal()">✕</span>
-      <img id="modalImg">
-      <h3 id="modalTitle" class="gold"></h3>
-      <p id="modalDesc"></p>
-      <button id="waBtn" class="whatsapp-btn">Enquire on WhatsApp</button>
-    </div>
-</div>
-<button id="backToTop" class="back-to-top">↑</button>
-<footer>
-  © 2026 Pabba Jewellers & Co.
-</footer>
-<script src="script.js"></script>
-</body></html>
+
+    <button id="backToTop" class="back-to-top" title="Go to top">↑</button>
+
+    <footer>
+        <p>© 2026 Pabba Jewellers & Co. | Crafted for Elegance</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
