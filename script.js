@@ -444,6 +444,10 @@ function renderCatalog(items) {
             </div>
         </div>
     `).join('');
+
+    // Update the item count if that element exists
+    const countEl = document.getElementById('itemCount');
+    if (countEl) countEl.innerText = `${items.length} Items Found`;
 }
 
 function openProductModal(id) {
