@@ -48,16 +48,19 @@ section {
 
 /* --- LOGO & NAVIGATION --- */
 .logo {
-    text-align: left; /* Keep logo content aligned left */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex: 1; /* Allows the logo to take up available space */
+    min-width: 0; /* Prevents flex items from overflowing */
 }
 
 .logo h1 {
     font-family: 'Cinzel', serif;
-    font-size: 1.4rem;
-    margin: 0;
-    color: #D4AF37;
-    letter-spacing: 2px;
-    text-transform: none !important; /* Force Brand Case */
+    font-size: 1.2rem; /* Reduced slightly for mobile safety */
+    white-space: nowrap; /* Keeps name on one line */
+    overflow: hidden;
+    text-overflow: ellipsis; /* Adds ... if name is somehow way too long */
 }
 
 .telugu-name {
@@ -200,10 +203,20 @@ section {
 /* Mobile Phones (up to 768px) */
 @media (max-width: 768px) {
     body { padding-top: 65px !important; }
-    .navbar { height: 65px; padding: 0 5%; background: #000; }
-    .logo h1 { font-size: 1.1rem; }
+    .navbar {
+        padding: 0 15px; /* Tighter padding for more horizontal room */
+        justify-content: flex-start; /* Align items to the left */
+        gap: 10px;    
+    }
+    .logo h1 {
+        font-size: 1.05rem; /* Precise size to prevent overlap */
+    }
     
-    .menu-toggle { display: block !important; color: #D4AF37; font-size: 1.5rem; cursor: pointer; }
+    .menu-toggle {
+        margin-left: auto; /* Pushes hamburger to the far right */
+        padding: 10px;
+        z-index: 1001;
+    }
 
     .nav-links {
         position: fixed; top: 65px; right: -100%;
