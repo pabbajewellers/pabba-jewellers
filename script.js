@@ -186,18 +186,27 @@ function openProductModal(id) {
     }
 
     modal.style.display = 'flex';
+    
+    /* --- ADD THIS LINE FOR IPHONE SCROLL FIX --- */
+    document.body.style.overflow = 'hidden'; 
 }
 
 function closeModal() {
     const modal = document.getElementById('productModal');
-    if (modal) modal.style.display = 'none';
+    if (modal) {
+        modal.style.display = 'none';
+        /* --- ADD THIS LINE TO RESTORE SCROLLING --- */
+        document.body.style.overflow = 'auto'; 
+    }
 }
 
 // Close modal when clicking outside content
-window.onclick = function(event) {
+window.addEventListener('click', (event) => {
     const modal = document.getElementById('productModal');
-    if (event.target == modal) closeModal();
-};
+    if (event.target === modal) {
+        closeModal();
+    }
+});
 
 /* --- TESTIMONIALS --- */
 async function loadTestimonials() {
@@ -275,15 +284,3 @@ const trustObserver = new IntersectionObserver((entries) => {
         }
     });
 }, { threshold: 0.5 });
-
-function openModal(name, imgSrc, description) {
-    document.getElementById('modalImg').src = imgSrc;
-    document.getElementById('modalTitle').innerText = name;
-    document.getElementById('modalDesc').innerText = description;
-    
-    // Updates WhatsApp link with the specific product name
-    const encodedName = encodeURIComponent(name);
-    document.getElementById('whatsappLink').href = `https://wa.me/YOURNUMBER?text=I am interested in the ${encodedName}`;
-    
-    document.getElementById('productModal').style.display = 'flex';
-}
