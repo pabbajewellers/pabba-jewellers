@@ -214,12 +214,16 @@ footer,
 .catalog-section { padding: 120px 8% 50px; min-height: 80vh; flex: 1 0 auto; }
 .catalog-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    /* grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); */
     gap: 30px;
     justify-content: center; /* This centers the cards when only 2 exist */
-    max-width: 1200px;
+    /* max-width: 1200px; */
     margin: 0 auto;
     padding: 40px 0;
+    /* Forces 4 columns on large screens */
+    grid-template-columns: repeat(4, 1fr); 
+    width: 100%;
+    max-width: 1400px; /* Allows the grid to spread out more on desktop */
 }
 
 .product-card {
@@ -367,10 +371,31 @@ footer {
 }
 
 @media (max-width: 600px) {
-    .catalog-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .catalog-grid { 
+        /* grid-template-columns: repeat(2, 1fr); gap: 10px; */
+        grid-template-columns: 1fr; /* One item per row */
+        gap: 25px;
+        padding: 20px 5%; /* Adds breathing room on mobile sides */
+    }
+    .product-card img {
+        height: auto;
+        aspect-ratio: 1/1; /* Keeps images perfectly square */
+    }
     .catalog-section { padding: 100px 3% 40px; }
+    /* Makes the title larger and more impactful on mobile */
+    .catalog-section h2 {
+        font-size: 1.8rem !important;
+        margin-bottom: 20px;
+    }
 }
 
 @media (min-width: 769px) {
     .close-menu { display: none; }
+}
+
+/* Tablets: 2 columns */
+@media (max-width: 1024px) {
+    .catalog-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
