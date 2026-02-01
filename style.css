@@ -25,6 +25,11 @@ section {
     text-shadow: 0 0 8px rgba(230, 193, 90, .35);
 }
 
+/* Ensure the .gold class doesn't override the font on the home page */
+h1.gold {
+    font-family: inherit; 
+}
+
 /* --- STICKY NAVBAR --- */
 .navbar {
     display: flex;
@@ -65,6 +70,7 @@ section {
     font-weight: 400 !important; /* Forces non-bold */
     letter-spacing: 3px !important; /* Adds elegance and space */
     text-shadow: none !important; /* Removes the "glow" that makes it look bold */
+    display: block !important;
 }
 
 .telugu-name {
