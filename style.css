@@ -374,18 +374,51 @@ footer {
     .catalog-grid { 
         /* grid-template-columns: repeat(2, 1fr); gap: 10px; */
         grid-template-columns: 1fr; /* One item per row */
-        gap: 25px;
-        padding: 20px 5%; /* Adds breathing room on mobile sides */
+        gap: 20px;
+        padding: 0 5%;
+    }
+    .product-card {
+        max-width: 340px; /* Prevents card from stretching too wide */
+        margin: 0 auto; /* Centers the card */
+        border-radius: 4px; /* Subtle roundness for coziness */
     }
     .product-card img {
-        height: auto;
-        aspect-ratio: 1/1; /* Keeps images perfectly square */
+        /* aspect-ratio: 1/1; */ /* Keeps images perfectly square */
+        height: 300px; /* Fixed height to keep cards uniform */
+        object-fit: cover;
     }
-    .catalog-section { padding: 100px 3% 40px; }
+    /* Button Refinement */
+    .product-card button {
+        width: 100% !important;
+        padding: 12px !important;
+        font-size: 0.8rem !important;
+    }
+    /* Refine Typography on Card */
+    .product-info h4 {
+        font-size: 0.95rem !important;
+        margin-bottom: 8px;
+    }
+    .product-info p {
+        font-size: 0.85rem !important;
+        margin-bottom: 15px;
+    }
+    .catalog-section { 
+        /* padding: 100px 3% 40px; */
+        padding: 80px 5% 40px !important; /* Reduced top padding */
+    }
     /* Makes the title larger and more impactful on mobile */
     .catalog-section h2 {
-        font-size: 1.8rem !important;
-        margin-bottom: 20px;
+        font-size: 1.6rem !important; /* Scale down title slightly */
+        margin-bottom: 5px !important;
+        letter-spacing: 2px !important;
+    }
+    .breadcrumb {
+        margin-bottom: 10px !important; /* Move closer to title */
+    }
+    #itemCount {
+        margin-bottom: 25px !important;
+        font-size: 0.75rem !important;
+        opacity: 0.8;
     }
 }
 
@@ -397,5 +430,13 @@ footer {
 @media (max-width: 1024px) {
     .catalog-grid {
         grid-template-columns: repeat(2, 1fr);
+    }
+}
+/* --- DESKTOP 4-COLUMN GRID (FOR UNIFORMITY) --- */
+@media (min-width: 1025px) {
+    .catalog-grid {
+        grid-template-columns: repeat(4, 1fr) !important;
+        gap: 25px;
+        max-width: 1300px;
     }
 }
