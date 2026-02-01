@@ -414,3 +414,31 @@ const observer = new IntersectionObserver((entries) => {
 
 const trustSection = document.querySelector('.trust');
 if (trustSection) observer.observe(trustSection);
+
+document.addEventListener('DOMContentLoaded', () => {
+    const params = new URLSearchParams(window.location.search);
+    const categoryFilter = params.get('category'); // e.g., 'bridal'
+    
+    fetch('products.json')
+        .then(res => res.json())
+        .then(data => {
+            const filtered = categoryFilter 
+                ? data.filter(p => p.category === categoryFilter)
+                : data;
+            renderCatalog(filtered);
+        });
+});
+
+function renderCatalog(items) {
+    const grid = document.getElementById('catalog-grid');
+    grid.innerHTML = items.map(item => `
+        <div class="product-card" onclick="openProductModal(${item.id})">
+            <img src="images/${item.image}" alt="${item.title_en}">
+            <div class="product-info">
+                <h4>${currentLang === 'en' ? item.title_en : item.title_te}</h4>
+                <p class="price">${item.price}</p>
+                <button class="view-btn">View Details</button>
+            </div>
+        </div>
+    `).join('');
+}
