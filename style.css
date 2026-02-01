@@ -57,19 +57,27 @@ section {
 
 .logo h1 {
     font-family: 'Cinzel', serif !important;
-    font-size: 1.3rem !important;
+    font-size: 1.25rem !important; /* Slightly smaller to look sharper */
     color: #D4AF37 !important;
     margin: 0 !important;
     text-transform: uppercase !important;
-    letter-spacing: 2px;
     line-height: 1.2;
+    font-weight: 400 !important; /* Forces non-bold */
+    letter-spacing: 3px !important; /* Adds elegance and space */
+    text-shadow: none !important; /* Removes the "glow" that makes it look bold */
 }
 
 .telugu-name {
-    font-size: 0.75rem;
-    color: #888;
+    /*color: #888;
+    margin-top: 2px;*/
     text-transform: none !important;
-    margin-top: 2px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.7rem;
+    color: #999; /* Slightly lighter gray */
+    font-weight: 300; /* Light weight */
+    letter-spacing: 1px;
+    margin-top: 4px;
+    display: block;
 }
 
 /* --- NAVIGATION LINKS --- */
