@@ -472,34 +472,60 @@ footer {
     100% { color: #D4AF37; text-shadow: 0 0 15px rgba(212, 175, 55, 0.3); transform: scale(1); }
 }
 
+/* --- Catalog Specific Layout --- */
+.catalog-section {
+    padding: 100px 8% 50px;
+    min-height: 80vh;
+}
+.catalog-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
 .catalog-container {
     padding: 120px 8% 50px;
 }
-
-#catalog-grid {
+.catalog-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 30px;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
 }
-
+/* The "Amazon" Style Card */
 .product-card {
-    background: #1a1a1a;
-    border: 1px solid #333;
+    background: #151515;
+    border: 1px solid #222;
+    border-radius: 8px;
+    overflow: hidden;
     transition: 0.3s;
     cursor: pointer;
-    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
 }
-
 .product-card:hover {
     border-color: #D4AF37;
     transform: translateY(-5px);
 }
-
+.product-card img {
+    width: 100%;
+    aspect-ratio: 1/1; /* Keeps images square and uniform */
+    object-fit: cover;
+}
 .product-info {
     padding: 15px;
-    text-align: center;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
-
+.product-info h4 {
+    margin: 0 0 10px;
+    font-size: 1rem;
+    color: #eee;
+}
+.price-tag {
+    color: #D4AF37;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
 .view-btn {
     background: transparent;
     border: 1px solid #D4AF37;
@@ -510,7 +536,21 @@ footer {
     text-transform: uppercase;
     font-size: 0.7rem;
 }
+/* --- MOBILE VIEW FOR CATALOG (2 Columns) --- */
+@media (max-width: 600px) {
+    .catalog-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 items per row */
+        gap: 10px; /* Tighter gap for mobile */
+    }
 
+    .catalog-section {
+        padding: 80px 3% 40px;
+    }
+
+    .product-info h4 {
+        font-size: 0.85rem;
+    }
+}
 /* --- MOBILE RESPONSIVE FIXES (768px and below) --- */
 @media (max-width: 768px) {
     /* 1. Reset Body Padding to match the smaller mobile header */
