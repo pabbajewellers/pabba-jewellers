@@ -54,7 +54,10 @@ h1, h2, h3, h4, .gold-title, .stat-box h3, .card h3 {
     color: var(--primary-gold) !important;
     text-shadow: none !important;
 }
-
+.stat-box h3 {
+    font-size: 1.5rem !important; /* Larger numbers */
+    margin-bottom: 5px;
+}
 section {
     padding: 60px 8%;
     text-align: center;
@@ -72,11 +75,11 @@ section h2 { font-size: 2rem; margin-bottom: 40px; }
 footer, 
 .stat-box p {
     font-family: var(--body-font);
-    font-size: 0.85rem;
-    letter-spacing: var(--letter-spacing-ui);
     text-transform: uppercase;
-    color: var(--text-white);
     text-decoration: none;
+    font-size: 0.7rem !important;
+    color: var(--text-gray);
+    letter-spacing: 1px;
 }
 
 /* --- STICKY NAVBAR --- */
@@ -285,6 +288,8 @@ footer,
     text-transform: uppercase;
     margin-top: 10px;
     display: block;
+    text-align: center; /* Ensures it is centered under the title */
+    width: 100%;
 }
 
 /* --- MODAL (AMAZON STYLE) --- */
@@ -383,8 +388,14 @@ footer,
 
 /* --- TRUST & STATS --- */
 .trust {
-    display: flex; justify-content: space-around; padding: 60px 8%;
-    background: #111; border-top: 1px solid #222; border-bottom: 1px solid #222;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columns for Desktop */
+    gap: 20px;
+    padding: 60px 8%;
+    background: #111;
+    border-top: 1px solid #222;
+    border-bottom: 1px solid #222;
+    text-align: center;
 }
 
 /* --- BUTTONS --- */
@@ -494,6 +505,21 @@ footer {
         margin-bottom: 5px !important;
     }
 
+    .trust {
+        grid-template-columns: repeat(2, 1fr); 
+        padding: 40px 5%;
+        gap: 20px 10px; /* Adjusted gap for tighter screens */
+    }
+    .stat-box {
+        padding: 10px; /* Prevents text hitting edges */
+    }
+    .stat-box h3 {
+        font-size: 1.1rem !important; /* Slightly smaller to prevent line breaks */
+        white-space: nowrap; /* Keeps "1000+" on one line */
+    }
+    .stat-box p {
+        font-size: 0.65rem !important;
+    }
     #itemCount {
         margin-bottom: 20px !important;
         font-size: 0.75rem !important;
@@ -529,8 +555,9 @@ footer {
         font-size: 1.4rem !important;
     }
     .modal-content {
-        max-height: 95vh; /* Gives more room on mobile screens */
+        max-height: 90vh; /* Gives more room on mobile screens */
         overflow-y: auto; /* Allows scrolling if the description is long */
+        display: block; /* Changes from flex to block for better mobile scrolling */
     }
 }
 
