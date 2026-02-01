@@ -275,3 +275,15 @@ const trustObserver = new IntersectionObserver((entries) => {
         }
     });
 }, { threshold: 0.5 });
+
+function openModal(name, imgSrc, description) {
+    document.getElementById('modalImg').src = imgSrc;
+    document.getElementById('modalTitle').innerText = name;
+    document.getElementById('modalDesc').innerText = description;
+    
+    // Updates WhatsApp link with the specific product name
+    const encodedName = encodeURIComponent(name);
+    document.getElementById('whatsappLink').href = `https://wa.me/YOURNUMBER?text=I am interested in the ${encodedName}`;
+    
+    document.getElementById('productModal').style.display = 'flex';
+}
