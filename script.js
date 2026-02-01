@@ -24,7 +24,9 @@ document.addEventListener('DOMContentLoaded', () => {
 function initNavigation() {
     const menuToggle = document.getElementById('mobile-menu');
     const navLinks = document.querySelector('.nav-links');
+    const closeBtn = document.getElementById('close-menu');
 
+    // Open Menu
     if (menuToggle) {
         menuToggle.addEventListener('click', () => navLinks.classList.toggle('active'));
     }
@@ -33,6 +35,13 @@ function initNavigation() {
     document.querySelectorAll('.nav-links a').forEach(link => {
         link.addEventListener('click', () => navLinks.classList.remove('active'));
     });
+
+    // Close Menu with X
+    if (closeBtn) {
+        closeBtn.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+        });
+    }
 }
 
 function initScrollEffects() {
