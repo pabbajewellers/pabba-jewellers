@@ -198,6 +198,31 @@ section {
 
 .back-to-top.show { opacity: 1; visibility: visible; }
 
+/* --- BREADCRUMB STYLING --- */
+.breadcrumb {
+    text-align: left;
+    margin-bottom: 25px;
+    font-size: 0.75rem;
+    color: #666;
+    letter-spacing: 1px;
+}
+
+.breadcrumb a {
+    color: #D4AF37 !important; /* Force Gold color */
+    text-decoration: none !important; /* Remove underline */
+    text-transform: uppercase;
+    transition: 0.3s;
+}
+
+.breadcrumb a:hover {
+    color: #fff !important;
+}
+
+.breadcrumb span {
+    margin: 0 8px;
+    color: #444;
+}
+
 /* --- RESPONSIVE MEDIA QUERIES --- */
 
 /* Mobile Phones (up to 768px) */
