@@ -592,15 +592,22 @@ footer {
         font-size: 1.4rem !important;
     }
     .modal-content {
-        flex-direction: column;
-        overflow-y: auto;
+        max-height: 90vh !important;
+        overflow-y: auto !important; 
+        display: block !important; /* Changes from 'flex' to 'block' to stack content naturally */
     }
     .close-menu {
         display: flex !important; /* Ensure it's visible in the drawer */
         z-index: 2001; /* Make sure it's above the nav-links content */
     }
     .carousel-container {
-        max-width: 100%; /* Use full available width on mobile */
+        max-width: 100% !important;
+        height: auto !important;
+    }    
+    .carousel-track img {
+        height: auto !important;
+        max-height: 50vh !important; /* Prevents the image from taking over the whole screen */
+        object-fit: contain !important; /* Shows the WHOLE image, no cropping */
     }
 }
 
@@ -659,6 +666,10 @@ footer {
     .modal-details {
         flex: 1; /* Text takes half space */
         text-align: left;
+    }
+    .carousel-track img {
+        max-height: 60vh !important;
+        object-fit: contain !important;
     }
 }
 
@@ -904,4 +915,11 @@ footer {
     .spec-item:last-child:nth-child(odd) {
         border-bottom: none;
     }
+}
+
+/* Hide Back to Top whenever a modal or menu is covering the screen */
+body.modal-open #backToTop,
+.nav-links.active ~ #backToTop {
+    visibility: hidden !important;
+    opacity: 0 !important;
 }
