@@ -328,8 +328,6 @@ function closeModal() {
     if (window.history.state && window.history.state.modalOpen) {
         window.history.back();
     }
-
-    track.querySelectorAll('.zoomed').forEach(el => el.classList.remove('zoomed'));
 }
 
 // Safety check: Only add listener if the button exists (Catalog Page)
