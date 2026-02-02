@@ -592,9 +592,8 @@ footer {
         font-size: 1.4rem !important;
     }
     .modal-content {
-        padding: 40px 15px !important; /* Tighter padding for smaller screens */
-        width: 90%;
-        border-radius: 20px; /* Slightly less rounded on mobile */
+        flex-direction: column;
+        overflow-y: auto;
     }
     .close-menu {
         display: flex !important; /* Ensure it's visible in the drawer */
@@ -700,7 +699,7 @@ footer {
 /* Specs Grid */
 .spec-item {
     padding: 15px;
-    border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
     text-align: left;
 }
 /* Add vertical divider only for even items in a 2-col grid */
@@ -855,41 +854,54 @@ footer {
 }
 
 .modal-content {
-    background: #0a0a0a;
-    width: 100%;
-    max-width: 850px; /* Increased width to prevent vertical overflow */
-    border: 1px solid var(--primary-gold);
-    border-radius: 15px;
-    position: relative; 
-    max-height: 95vh;
-    overflow-y: auto;
-    box-shadow: 0 0 40px rgba(0, 0, 0, 0.9), 0 0 20px rgba(212, 175, 55, 0.1);
-    padding: 40px 30px;
-    animation: modalSlideUp 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+    position: relative !important; /* This is the anchor */
+    background: #000;
+    border: 1px solid #d4af37;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: row; 
+    width: 95%;
+    max-width: 1100px;
+    max-height: 90vh;
+    overflow: hidden; /* Keeps carousel inside borders */
 }
 
 /* Floating Close Button - reclaiming top space */
 #modalCloseBtn {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    background: rgba(0, 0, 0, 0.6);
-    color: var(--primary-gold);
-    border: 1px solid var(--primary-gold);
+    position: absolute !important; 
+    top: 15px !important;
+    right: 15px !important;
+    left: auto !important; /* Prevents it from sticking to the left */
+    z-index: 9999; /* Makes sure it stays above images */
+    
+    /* Styling */
+    background: #d4af37;
+    color: #000;
+    width: 35px;
+    height: 35px;
     border-radius: 50%;
-    width: 38px;
-    height: 38px;
+    border: none;
+    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    cursor: pointer;
-    z-index: 100;
-    transition: var(--transition-smooth);
-    font-size: 1.2rem;
+    font-size: 20px;
 }
 
 #modalCloseBtn:hover {
     background: var(--primary-gold);
     color: #000;
     transform: rotate(90deg);
+}
+
+/* On Desktop (2 cols) */
+@media (min-width: 481px) {
+    .spec-item:nth-child(odd) {
+        border-right: 1px solid rgba(212, 175, 55, 0.2);
+    }
+    /* Remove bottom border from last TWO items only if they are the last row */
+    .spec-item:nth-last-child(-n+2):nth-child(even),
+    .spec-item:last-child:nth-child(odd) {
+        border-bottom: none;
+    }
 }
