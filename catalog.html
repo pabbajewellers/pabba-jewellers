@@ -36,11 +36,10 @@
 
         <div class="catalog-grid" id="catalogGrid"></div>
     </section>
-
+<!--
     <div class="modal" id="productModal">
         <div class="modal-content">
-            <!-- <span class="close-btn" onclick="closeModal()">✕</span> -->
-            <span class="close-btn" id="modalCloseBtn">✕</span>
+          <span class="close-btn" id="modalCloseBtn">✕</span>
             <div class="modal-body">
                 <img id="modalImg" src="" alt="Jewellery Image">
                 <div class="modal-details">
@@ -53,6 +52,27 @@
             </div>
         </div>
     </div>
+-->
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <div class="modal-body">
+                <div class="modal-image-container">
+                    <img id="modalImg" src="" alt="Product Image">
+                    <div id="thumbContainer" class="thumb-gallery"></div>
+                </div>
+                <div class="modal-details">
+                    <h2 id="modalTitle"></h2>
+                    <div id="modalSpecs" class="specs-grid"></div>
+                    <p id="modalDesc"></p>
+                    <a id="whatsappBtn" href="#" target="_blank" class="whatsapp-btn">
+                        Enquire on WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
     <footer>
         <p>© 2026 Pabba Jewellers & Co. | Crafted for Elegance</p>
     </footer>
