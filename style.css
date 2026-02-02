@@ -768,3 +768,86 @@ footer {
         grid-template-columns: 1fr; /* Stack specs on very small phones */
     }
 }
+
+/* --- CAROUSEL SYSTEM --- */
+.carousel-container {
+    position: relative;
+    width: 100%;
+    max-width: 400px; /* Adjust based on your image preference */
+    margin: 0 auto 20px;
+    overflow: hidden; /* Clips the images outside the view */
+    border-radius: 12px;
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform;
+}
+
+.carousel-track img {
+    width: 100%;
+    flex-shrink: 0; /* Prevents images from squeezing */
+    aspect-ratio: 1/1;
+    object-fit: cover;
+}
+
+/* Navigation Arrows */
+.nav-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: var(--primary-gold);
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    z-index: 10;
+    font-size: 1.2rem;
+    border-radius: 4px;
+    transition: 0.3s;
+}
+
+.nav-arrow:hover { background: var(--primary-gold); color: #000; }
+.prev { left: 10px; }
+.next { right: 10px; }
+
+/* Pagination Dots */
+.dots-container {
+    position: absolute;
+    bottom: 15px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    z-index: 10;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.4);
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.dot.active {
+    background: var(--primary-gold);
+    transform: scale(1.3);
+}
+
+/* Hide arrows/dots if not needed */
+.hidden { display: none !important; }
+
+/* Specs Grid (Previous styling but ensured) */
+.specs-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    background: rgba(212, 175, 55, 0.05);
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    border: 1px solid rgba(212, 175, 55, 0.1);
+}
