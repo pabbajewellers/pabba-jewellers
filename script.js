@@ -177,6 +177,7 @@ let currentSlideIndex = 0;
 let totalSlides = 0;
 
 function openProductModal(id) {
+    document.getElementById('backToTop').style.display = 'none';
     const product = allProducts.find(p => p.id === id);
     if (!product) {
         console.error("Product not found for ID:", id);
@@ -200,13 +201,14 @@ function openProductModal(id) {
     imageList.forEach((imgName, index) => {
         // Inject Images (Adding the images/ folder path here)
         const img = document.createElement('img');
-        // This logic prevents the "images/images/" bug
-        if (imgName.startsWith('images/')) {
-            img.src = imgName; // Use as is
-        } else {
-            img.src = `images/${imgName}`; // Add prefix
-        }
+        // This logic prevents the "images/images/" Path Fix
+        img.src = imgName.startsWith('images/') ? imgName : `images/${imgName}`;
         img.alt = product.title_en;
+        // --- ZOOM LOGIC ---
+        img.onclick = (e) => {
+            // Only toggle zoom if there's no sliding happening
+            e.currentTarget.classList.toggle('zoomed');
+        };
         track.appendChild(img);
 
         // Inject Dots
@@ -215,6 +217,18 @@ function openProductModal(id) {
         dot.onclick = () => goToSlide(index);
         dotsContainer.appendChild(dot);
     });
+
+    // --- THE VISIBILITY FIX ---
+    // Ensure the track width is set correctly based on number of images
+    track.style.width = `${totalSlides * 100}%`;
+    // Ensure individual images are sized correctly
+    const imgs = track.querySelectorAll('img');
+    imgs.forEach(img => {
+        img.style.width = `${100 / totalSlides}%`;
+    });
+    
+    // Force reset to first slide position
+    track.style.transform = `translateX(0%)`;
 
     // Hide arrows if only 1 image
     if (totalSlides <= 1) {
@@ -289,6 +303,7 @@ function updateCarousel() {
 }
 
 function closeModal() {
+    document.getElementById('backToTop').style.display = 'flex';
     const modal = document.getElementById('productModal');
     if (modal) {
         modal.style.display = 'none';
