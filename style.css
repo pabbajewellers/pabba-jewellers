@@ -425,12 +425,6 @@ footer,
     transform: scale(0.96); /* Button physically "presses" in when tapped */
     background: rgba(212, 175, 55, 0.2);
 }
-/* Ensure Mobile Menu X doesn't show on Desktop */
-@media (min-width: 769px) {
-    .close-menu, .nav-links .close-btn { 
-        display: none !important; 
-    }
-}
 
 /* --- TRUST & STATS --- */
 .trust {
@@ -632,6 +626,10 @@ footer {
         padding: 40px 20px;
         margin-top: 20px;
     }
+    .close-menu {
+        display: flex !important; /* Ensure it's visible in the drawer */
+        z-index: 2001; /* Make sure it's above the nav-links content */
+    }
 }
 
 /* 3. DESKTOP 4-COLUMN (Premium View) */
@@ -654,4 +652,28 @@ footer {
 .breadcrumb span {
     margin: 0 8px;
     color: #444; /* Dulls the slash so the gold text pops */
+}
+
+/* --- DESKTOP MENU RESET --- */
+/* Ensure Mobile Menu X doesn't show on Desktop */
+@media (min-width: 769px) {
+    .close-menu, .nav-links .close-btn { 
+        display: none !important; 
+    }
+    .nav-links {
+        position: static !important; /* Removes the fixed drawer behavior */
+        display: flex !important;    /* Ensures items are visible */
+        flex-direction: row !important; /* Horizontal layout */
+        gap: 25px;
+        right: auto !important;      /* Brings it back from -100% */
+        width: auto !important;      /* Resets from the 280px drawer width */
+        height: auto !important;     /* Resets from 100vh */
+        background: transparent !important; /* Removes the dark drawer background */
+        backdrop-filter: none !important;
+        border: none !important;
+    }
+
+    .menu-toggle, .close-menu {
+        display: none !important; /* Ensures mobile icons stay hidden */
+    }
 }
