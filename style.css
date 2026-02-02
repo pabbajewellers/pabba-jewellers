@@ -21,6 +21,9 @@
     padding: 0;
     box-sizing: border-box;
 }
+html {
+    scrollbar-gutter: stable;
+}
 
 body {
     font-family: var(--body-font); /* Site-wide default */
@@ -42,6 +45,9 @@ body.catalog-page {
 
 body.catalog-page .catalog-section {
     padding-top: 0px !important; /* Move content closer to the logo */
+}
+body.modal-open {
+    overflow: hidden;
 }
 
 /* --- UNIFIED HEADINGS (SITE-LEVEL) --- */
@@ -345,18 +351,6 @@ footer,
     flex-direction: column; /* Stacked layout like reference */
     align-items: center;
 }
-#modalImg { 
-    width: 100%; 
-    height: auto;
-    max-height: 300px; /* Prevents image from pushing buttons off-screen */
-    object-fit: contain;
-    margin-bottom: 25px;
-    filter: drop-shadow(0 15px 25px rgba(0,0,0,0.6)); /* Heavy shadow for 3D depth */
-    transition: transform 0.3s ease;
-}
-#modalImg:hover {
-    transform: scale(1.03); /* Subtle interactive lift */
-}
 .modal-details { 
     width: 100%; 
     padding: 0;
@@ -652,12 +646,16 @@ footer {
         font-size: 1.4rem !important;
     }
     .modal-content {
-        padding: 40px 20px;
-        margin-top: 20px;
+        padding: 30px 15px; /* Tighter padding for smaller screens */
+        width: 90%;
+        border-radius: 20px; /* Slightly less rounded on mobile */
     }
     .close-menu {
         display: flex !important; /* Ensure it's visible in the drawer */
         z-index: 2001; /* Make sure it's above the nav-links content */
+    }
+    .carousel-container {
+        max-width: 100%; /* Use full available width on mobile */
     }
 }
 
@@ -732,17 +730,6 @@ footer {
 }
 
 /* Specs Grid */
-.specs-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    background: rgba(255, 255, 255, 0.03);
-    padding: 15px;
-    border-radius: 8px;
-    margin: 15px 0;
-    border: 1px solid rgba(212, 175, 55, 0.1);
-}
-
 .spec-item {
     display: flex;
     flex-direction: column;
@@ -780,13 +767,17 @@ footer {
     overflow: hidden; /* This is the "window" the user looks through */
     border-radius: 12px;
     background: #000; /* Backdrop for the images */
+    touch-action: pan-y;
 }
 /* 2. The Sliding Track (The "Train" of images) */
 .carousel-track {
     display: flex;
-    width: 100%; /* Default for 1 image */
+    width: 100%; 
     transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     will-change: transform;
+    /* ADD THIS: Forces hardware acceleration for smoother slides */
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
 }
 /* 3. The Images themselves */
 .carousel-track img {
@@ -804,6 +795,16 @@ footer {
     transform: scale(1.5);
     cursor: zoom-out;
     z-index: 50;
+    /* ADD THIS: Ensures the image stays centered while zooming */
+    transform-origin: center;
+}
+/* If dots-container or nav-arrow is empty or hidden, ensure layout doesn't shift */
+.carousel-container:has(.hidden) {
+    cursor: default;
+}
+/* Ensure images don't stretch if only one exists */
+.carousel-track:only-child img {
+    flex: 0 0 100%;
 }
 /* --- NAVIGATION UI --- */
 .nav-arrow {
