@@ -62,7 +62,8 @@
     "id": 7,
     "title_en": "Kundan Bridal Set",
     "title_te": "కుందన్ వధువు సెట్",
-    "category": "bridal",
+    "category": "bridal",    
+    "image": "Diamond Statement Necklace.jpg",
     "images": [
       "images/Classic Gold Ring.jpg",
       "images/Diamond Statement Necklace.jpg",
@@ -80,7 +81,8 @@
     "id": 8,
     "title_en": "Solitaire Diamond Ring",
     "title_te": "సాలిటైర్ డైమండ్ రింగ్",
-    "category": "diamond",
+    "category": "diamond",    
+    "image": "Classic Gold Ring.jpg",
     "images": [
       "images/Diamond Statement Necklace.jpg",
       "images/Classic Gold Ring.jpg"
