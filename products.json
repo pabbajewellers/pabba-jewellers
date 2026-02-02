@@ -64,9 +64,9 @@
     "title_te": "కుందన్ వధువు సెట్",
     "category": "bridal",
     "images": [
-      "Classic Gold Ring.jpg",
-      "Diamond Statement Necklace.jpg",
-      "Bridal Gold Necklace Set.jpg"
+      "images/Classic Gold Ring.jpg",
+      "images/Diamond Statement Necklace.jpg",
+      "images/Bridal Gold Necklace Set.jpg"
     ],
     "specs": {
       "purity": "22K Gold (BIS Hallmarked)",
@@ -82,8 +82,8 @@
     "title_te": "సాలిటైర్ డైమండ్ రింగ్",
     "category": "diamond",
     "images": [
-      "Diamond Statement Necklace.jpg",
-      "Classic Gold Ring.jpg"
+      "images/Diamond Statement Necklace.jpg",
+      "images/Classic Gold Ring.jpg"
     ],
     "specs": {
       "purity": "18K White Gold",
