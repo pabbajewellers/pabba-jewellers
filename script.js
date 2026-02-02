@@ -37,7 +37,7 @@ function initNavigation() {
             navLinks.classList.add('active');
         });
 
-        // Close Menu with X
+        // Inside initNavigation function
         if (closeBtn) {
             closeBtn.addEventListener('click', () => {
                 navLinks.classList.remove('active');
@@ -48,6 +48,7 @@ function initNavigation() {
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => navLinks.classList.remove('active'));
         });
+        
     } else {
         console.error("Navigation IDs (mobile-menu or nav-links) not found in HTML.");
     }
@@ -188,7 +189,15 @@ function openProductModal(id) {
     modal.style.display = 'flex';
     
     /* --- ADD THIS LINE FOR IPHONE SCROLL FIX --- */
-    document.body.style.overflow = 'hidden'; 
+    document.body.style.overflow = 'hidden';
+
+    // to handle the "Back" button
+    window.history.pushState({ modalOpen: true }, "");
+    
+    // Add this listener at the bottom of your file
+    window.addEventListener('popstate', () => {
+        closeModal();
+    });
 }
 
 function closeModal() {
@@ -198,6 +207,12 @@ function closeModal() {
         /* --- ADD THIS LINE TO RESTORE SCROLLING --- */
         document.body.style.overflow = 'auto'; 
     }
+}
+
+// Safety check: Only add listener if the button exists (Catalog Page)
+const modalCloseBtn = document.getElementById('modalCloseBtn');
+if (modalCloseBtn) {
+    modalCloseBtn.addEventListener('click', closeModal);
 }
 
 // Close modal when clicking outside content
