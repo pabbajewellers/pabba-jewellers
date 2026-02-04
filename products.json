@@ -2,7 +2,7 @@
   {
     "specs": {},
     "images": [
-      "images/Classic Gold Ring.jpg"
+      "Classic Gold Ring.jpg"
     ],
     "id": 1,
     "category": "bridal",
@@ -11,12 +11,12 @@
     "price": "Contact for Price",
     "desc_en": "Premium Kundan work with semi-precious stones.",
     "desc_te": "విలువైన రాళ్లతో చేసిన ప్రీమియం కుందన్ పని.",
-    "image": "images/Classic Gold Ring.jpg"
+    "image": "Classic Gold Ring.jpg"
   },
   {
     "specs": {},
     "images": [
-      "images/Bridal Gold Necklace Set.jpg"
+      "Bridal Gold Necklace Set.jpg"
     ],
     "id": 2,
     "category": "bridal",
@@ -25,12 +25,12 @@
     "price": "Contact for Price",
     "desc_en": "Traditional bridal necklace set with intricate detailing.",
     "desc_te": "వివాహ వేడుకల కోసం ప్రత్యేకంగా రూపొందించిన సంప్రదాయ హారం.",
-    "image": "images/Bridal Gold Necklace Set.jpg"
+    "image": "Bridal Gold Necklace Set.jpg"
   },
   {
     "specs": {},
     "images": [
-      "images/Classic Gold Ring.jpg"
+      "Classic Gold Ring.jpg"
     ],
     "id": 3,
     "category": "diamond",
@@ -39,12 +39,12 @@
     "price": "Contact for Price",
     "desc_en": "GIA certified diamond set in 18k white gold.",
     "desc_te": "18 క్యారెట్ల వైట్ గోల్డ్‌లో సెట్ చేయబడిన డైమండ్.",
-    "image": "images/Classic Gold Ring.jpg"
+    "image": "Classic Gold Ring.jpg"
   },
   {
     "specs": {},
     "images": [
-      "images/Diamond Statement Necklace.jpg"
+      "Diamond Statement Necklace.jpg"
     ],
     "id": 4,
     "category": "diamond",
@@ -53,12 +53,12 @@
     "price": "Contact for Price",
     "desc_en": "Luxury diamond necklace for premium occasions.",
     "desc_te": "ప్రత్యేక వేడుకల కోసం విలాసవంతమైన డైమండ్ హారం.",
-    "image": "images/Diamond Statement Necklace.jpg"
+    "image": "Diamond Statement Necklace.jpg"
   },
   {
     "specs": {},
     "images": [
-      "images/Diamond Statement Necklace.jpg"
+      "Diamond Statement Necklace.jpg"
     ],
     "id": 5,
     "category": "daily",
@@ -67,12 +67,12 @@
     "price": "Contact for Price",
     "desc_en": "Traditional temple design for daily elegance.",
     "desc_te": "రోజువారీ ఉపయోగం కోసం సంప్రదాయ టెంపుల్ డిజైన్.",
-    "image": "images/Diamond Statement Necklace.jpg"
+    "image": "Diamond Statement Necklace.jpg"
   },
   {
     "specs": {},
     "images": [
-      "images/Classic Gold Ring.jpg"
+      "Classic Gold Ring.jpg"
     ],
     "id": 6,
     "category": "daily",
@@ -81,7 +81,7 @@
     "price": "Contact for Price",
     "desc_en": "Minimal elegant gold ring for daily wear.",
     "desc_te": "ప్రతిరోజు ధరించడానికి సరైన అందమైన గోల్డ్ రింగ్.",
-    "image": "images/Classic Gold Ring.jpg"
+    "image": "Classic Gold Ring.jpg"
   },
   {
     "specs": {
@@ -90,9 +90,9 @@
       "stones_en": "Premium Kundan & Emeralds"
     },
     "images": [
-      "images/Classic Gold Ring.jpg",
-      "images/Diamond Statement Necklace.jpg",
-      "images/Bridal Gold Necklace Set.jpg"
+      "Classic Gold Ring.jpg",
+      "Diamond Statement Necklace.jpg",
+      "Bridal Gold Necklace Set.jpg"
     ],
     "id": 7,
     "category": "bridal",
@@ -101,7 +101,7 @@
     "price": "Contact for Price",
     "desc_en": "Premium Kundan work with semi-precious stones.",
     "desc_te": "విలువైన రాళ్లతో చేసిన ప్రీమియం కుందన్ పని.",
-    "image": "images/Classic Gold Ring.jpg"
+    "image": "Classic Gold Ring.jpg"
   },
   {
     "specs": {
@@ -109,8 +109,8 @@
       "stones_en": "1.5ct GIA Certified Diamond"
     },
     "images": [
-      "images/Diamond Statement Necklace.jpg",
-      "images/Classic Gold Ring.jpg"
+      "Diamond Statement Necklace.jpg",
+      "Classic Gold Ring.jpg"
     ],
     "id": 8,
     "category": "diamond",
@@ -119,6 +119,6 @@
     "price": "Contact for Price",
     "desc_en": "GIA certified diamond set in 18k white gold.",
     "desc_te": "18 క్యారెట్ల వైట్ గోల్డ్‌లో సెట్ చేయబడిన అత్యుత్తమ డైమండ్ రింగ్.",
-    "image": "images/Diamond Statement Necklace.jpg"
+    "image": "Diamond Statement Necklace.jpg"
   }
 ]
