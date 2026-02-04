@@ -309,10 +309,11 @@ function closeModal() {
     }
 
     // Reset UI state
+    document.getElementById('backToTop').style.display = 'flex';
+    
+    modal.style.display = 'none';
     document.body.classList.remove('modal-open');
     document.body.style.overflow = 'auto'; // Re-enable scroll
-    document.getElementById('backToTop').style.display = 'flex';
-    modal.style.display = 'none';
 
     // Remove Arrow Listeners to prevent "ghost" clicks
     const prevBtn = document.querySelector('.nav-arrow.prev');
@@ -429,3 +430,25 @@ window.addEventListener('popstate', (event) => {
         }
     }
 });
+
+const track = document.querySelector('.carousel-track');
+let touchStartX = 0;
+let touchEndX = 0;
+
+track.addEventListener('touchstart', e => {
+    touchStartX = e.changedTouches[0].screenX;
+}, { passive: true });
+
+track.addEventListener('touchend', e => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipe();
+}, { passive: true });
+
+function handleSwipe() {
+    const swipeThreshold = 50; 
+    if (touchStartX - touchEndX > swipeThreshold) {
+        moveSlide(1); // Changed from moveNext()
+    } else if (touchEndX - touchStartX > swipeThreshold) {
+        moveSlide(-1); // Changed from movePrev()
+    }
+}
