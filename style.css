@@ -4,16 +4,29 @@
     --text-white: #eeeeee;
     --text-gray: #999999;
     --bg-black: #0b0b0b;
-    
     /* Font Families */
     --heading-font: 'Cinzel', serif;
     --body-font: 'Poppins', sans-serif;
-    
     /* Unified Spacing */
     --letter-spacing-gold: 3px;
-    --letter-spacing-ui: 1px;
+   /* --letter-spacing-ui: 1px; */
     --transition-smooth: all 0.3s ease;
 }
+
+/* --- LUXURY DARK SCROLLBAR --- */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--bg-black); }
+::-webkit-scrollbar-thumb { 
+    background: #333; 
+    border-radius: 10px; 
+    border: 2px solid var(--bg-black); 
+}
+::-webkit-scrollbar-thumb:hover { background: var(--primary-gold); }
+    /* Firefox support */
+    * {
+        scrollbar-width: thin;
+        scrollbar-color: #333 var(--bg-black);
+    }
 
 /* --- BASE STYLES --- */
 * {
@@ -43,6 +56,8 @@ body.catalog-page .catalog-section {
 }
 body.modal-open {
     overflow: hidden;
+    touch-action: none; /* Stops mobile "rubber-banding" */
+    height: 100vh;
 }
 
 /* --- UNIFIED HEADINGS (SITE-LEVEL) --- */
@@ -243,16 +258,17 @@ footer,
 .catalog-section { padding: 40px 8% 50px; min-height: 80vh; flex: 1 0 auto; }
 .catalog-grid {
     display: grid;
-    /* grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); */
-    gap: 30px;
-    justify-content: center; /* This centers the cards when only 2 exist */
-    /* max-width: 1200px; */
-    margin: 0 auto;
-    padding: 40px 0;
     /* Forces 4 columns on large screens */
     grid-template-columns: repeat(4, 1fr); 
+    gap: 30px;
     width: 100%;
     max-width: 1400px; /* Allows the grid to spread out more on desktop */
+    margin: 0 auto;
+    
+    /* grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); */
+    /*padding: 40px 0; */
+    /* justify-content: center; */ /* This centers the cards when only 2 exist */
+    /* max-width: 1200px; */
 }
 
 .product-card {
@@ -483,6 +499,11 @@ footer {
 @media (max-width: 768px) {
     /* Kill Global Gaps */
     body { padding-top: 70px !important; }
+    body.modal-open {
+        overflow: hidden;
+        position: fixed; /* Prevents background scroll on iOS Safari */
+        width: 100%;
+    }
     body.catalog-page { padding-top: 70px !important; }
     
     .navbar { padding: 0 20px; height: 70px; }
@@ -509,24 +530,13 @@ footer {
 
     /* FORCE 1 ITEM PER ROW - No more skinny cards */
     .catalog-grid {
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
         grid-template-columns: 1fr !important;
-        gap: 30px !important;
-        padding: 0 !important;
-        width: 100% !important;
+        justify-items: center;
     }
 
     /* The "Cute" Card Proportion */
     .product-card {
-        width: 100% !important;
-        max-width: 340px !important; 
-        margin: 0 auto !important;
-        /* border: 1px solid rgba(212, 175, 55, 0.3) !important; */
-        border: 1px solid rgba(255, 255, 255, 0.05);
-        border-radius: 8px !important;
-        background: linear-gradient(145deg, #151515, #0d0d0d);
+        max-width: 350px;
     }
 
     .product-card img {
@@ -592,22 +602,33 @@ footer {
         font-size: 1.4rem !important;
     }
     .modal-content {
-        max-height: 90vh !important;
-        overflow-y: auto !important; 
-        display: block !important; /* Changes from 'flex' to 'block' to stack content naturally */
+        display: block !important;
+        overflow-y: auto !important;
+        height: auto;
+        max-height: 95vh;
     }
     .close-menu {
         display: flex !important; /* Ensure it's visible in the drawer */
         z-index: 2001; /* Make sure it's above the nav-links content */
     }
     .carousel-container {
-        max-width: 100% !important;
-        height: auto !important;
+        border-radius: 12px 12px 0 0;
+        margin-bottom: 0;
     }    
     .carousel-track img {
         height: auto !important;
         max-height: 50vh !important; /* Prevents the image from taking over the whole screen */
         object-fit: contain !important; /* Shows the WHOLE image, no cropping */
+    }
+    #productModal {
+        padding: 10px; /* More room for content on small screens */
+    }
+    /* Fix: Keep the Close button visible even if the user scrolls down the modal */
+    #modalCloseBtn {
+        position: fixed !important;
+        top: 20px !important;
+        right: 20px !important;
+        box-shadow: 0 0 15px rgba(0,0,0,0.5);
     }
 }
 
@@ -617,6 +638,22 @@ footer {
         grid-template-columns: repeat(4, 1fr) !important;
         gap: 30px !important;
         padding: 40px 0 !important;
+    }
+    .modal-body {
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* Precise 50/50 split */
+        align-items: center; /* Vertically centers everything */
+        gap: 0; 
+    }
+    .carousel-container {
+        max-width: 100%;
+        margin: 0;
+        border-radius: 12px 0 0 12px; /* Smooth rounded corners only on the left */
+    }
+    .modal-details {
+        padding: 40px;
+        max-height: 80vh;
+        overflow-y: auto; /* Allow text scroll if description is long */
     }
 }
 
@@ -771,14 +808,9 @@ footer {
 /* 2. The Sliding Track (The "Train" of images) */
 .carousel-track {
     display: flex;
-    width: 100%; 
-    transition: transform 0.3s ease-in-out;
-    will-change: transform;
-    /* ADD THIS: Forces hardware acceleration for smoother slides */
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    user-select: none;
-    -webkit-user-drag: none;
+    width: 100%;
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1); /* Smoother curve */
+    will-change: transform; /* Hint to the browser for GPU acceleration */
 }
 /* 3. The Images themselves */
 .carousel-track img {
@@ -932,10 +964,10 @@ body.modal-open #backToTop,
 
 /* 2. Dedicate a full row to Stones and clean up the grid */
 .spec-item.full-row {
-    grid-column: span 2; /* Spans across both columns */
-    border-right: none !important; /* Removes the middle divider */
-    border-top: 1px solid rgba(212, 175, 55, 0.2);
-    background: rgba(212, 175, 55, 0.05); /* Subtle highlight for the stones row */
+    grid-column: 1 / -1;
+    border-left: 3px solid var(--primary-gold) !important;
+    background: linear-gradient(90deg, rgba(212, 175, 55, 0.08), transparent);
+    padding: 20px; /* Extra breathing room */
 }
 
 /* Ensure the label in the full row looks premium */
@@ -945,8 +977,51 @@ body.modal-open #backToTop,
 }
 
 .spec-item.full-row .spec-value {
-    display: block;
-    text-align: center;
-    font-style: italic;
     color: var(--primary-gold);
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+}
+
+@media (max-width: 1100px) {
+    .catalog-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        padding: 0 20px;
+        gap: 20px;
+    }
+    .trust {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .catalog-grid {
+        grid-template-columns: 1fr; /* Mobile view */
+        justify-items: center;
+    }
+    .product-card {
+        width: 100%;
+        max-width: 350px; /* The "Cuteness" constraint */
+    }
+}
+
+/* DESKTOP PREMIUM VIEW (1101px+) */
+@media (min-width: 1101px) {
+    .modal-body {
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* Image left, Specs right */
+        align-items: start;
+        gap: 0;
+    }
+
+    .modal-details {
+        padding: 40px;
+        border-left: 1px solid rgba(212, 175, 55, 0.1);
+        height: 100%;
+        overflow-y: auto;
+    }
+    
+    .carousel-container {
+        border-radius: 12px 0 0 12px;
+    }
 }
