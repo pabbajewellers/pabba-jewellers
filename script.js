@@ -212,19 +212,40 @@ function openProductModal(id) {
         }
     }
 
-    // 5. Details & Specs
-    document.getElementById('modalTitle').innerText = currentLang === 'en' ? product.title_en : product.title_te;
-    document.getElementById('modalDesc').innerText = currentLang === 'en' ? product.desc_en : product.desc_te;
+    // 5. Details & Specs (Language Aware)
+    const isTelugu = (currentLang === 'te');
+    document.getElementById('modalTitle').innerText = isTelugu ? product.title_te : product.title_en;
+    document.getElementById('modalDesc').innerText = isTelugu ? product.desc_en : product.desc_te;
 
     const specsGrid = document.getElementById('modalSpecs');
     specsGrid.innerHTML = "";
+
     if (product.specs) {
-        for (const [key, value] of Object.entries(product.specs)) {
+        // A. Handle Standard Specs (Purity & Weight)
+        const purityLabel = isTelugu ? 'ప్యూరిటీ' : 'PURITY';
+        const weightLabel = isTelugu ? 'బరువు' : 'WEIGHT';
+        
+        specsGrid.innerHTML = `
+            <div class="spec-item">
+                <span class="spec-label">${purityLabel}</span>
+                <span class="spec-value">${product.specs.purity || '22K'}</span>
+            </div>
+            <div class="spec-item">
+                <span class="spec-label">${weightLabel}</span>
+                <span class="spec-value">${product.specs.weight || 'N/A'}</span>
+            </div>
+        `;
+
+        // B. Handle Stones as a Full Row (The requested fix)
+        const stonesVal = isTelugu ? product.specs.stones_te : product.specs.stones_en;
+        if (stonesVal && stonesVal.toLowerCase() !== "none") {
+            const stonesLabel = isTelugu ? "రాళ్ళు (Stones)" : "STONES";
             specsGrid.innerHTML += `
-                <div class="spec-item">
-                    <span class="spec-label">${key}</span>
-                    <span class="spec-value">${value}</span>
-                </div>`;
+                <div class="spec-item full-row">
+                    <span class="spec-label">${stonesLabel}</span>
+                    <span class="spec-value">${stonesVal}</span>
+                </div>
+            `;
         }
         specsGrid.style.display = 'grid';
     } else {
