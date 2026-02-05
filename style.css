@@ -1032,57 +1032,6 @@ body.modal-open #backToTop,
     }
 }
 
-/* Carousel Container */
-.carousel-wrapper {
-    position: relative;
-    display: flex;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.carousel-viewport {
-    overflow: hidden; /* This hides the other 6-7 items */
-    width: 100%;
-    padding: 20px 0;
-}
-
-#collectionsGrid {
-    display: flex; /* Change from Grid to Flex for horizontal sliding */
-    gap: 30px;
-    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    will-change: transform;
-}
-
-/* Ensure cards don't shrink and stay a consistent width */
-#collectionsGrid .card {
-    flex: 0 0 calc(33.333% - 20px); /* Shows 3 items on desktop */
-    min-width: 280px;
-}
-
-/* Arrows */
-.slider-arrow {
-    background: rgba(0, 0, 0, 0.6);
-    color: var(--primary-gold);
-    border: 1px solid var(--primary-gold);
-    font-size: 24px;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    cursor: pointer;
-    z-index: 10;
-    transition: 0.3s;
-    position: absolute;
-}
-
-.prev-arrow { left: -60px; }
-.next-arrow { right: -60px; }
-
-.slider-arrow:hover {
-    background: var(--primary-gold);
-    color: #000;
-}
-
 /* Mobile: Show only 1 card at a time */
 @media (max-width: 768px) {
     #collectionsGrid .card {
@@ -1125,4 +1074,49 @@ body.modal-open #backToTop,
 /* 5. Desktops & Large Screens - 1281px and up */
 @media screen and (min-width: 1281px) {
   /* body { background-color: white; } */
+}
+
+.collection-slider-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.carousel-viewport {
+    overflow: hidden;
+    width: 100%;
+}
+
+#collectionsGrid {
+    display: flex; /* Critical: keeps items in a row */
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    gap: 0; /* Gap is handled by item padding for better math */
+}
+
+/* Logic for item widths */
+#collectionsGrid > div, 
+#collectionsGrid > a {
+    flex: 0 0 33.333%; /* Default 3 items */
+    padding: 0 15px; /* Creates the "gap" visually */
+    box-sizing: border-box;
+}
+
+@media (max-width: 1024px) {
+    #collectionsGrid > div, #collectionsGrid > a { flex: 0 0 50%; } /* 2 items */
+}
+
+@media (max-width: 768px) {
+    #collectionsGrid > div, #collectionsGrid > a { flex: 0 0 100%; } /* 1 item */
+}
+
+.slider-arrow {
+    /* Style these to match your luxury gold theme */
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: var(--primary-gold);
+    font-size: 2rem;
+    z-index: 5;
+    padding: 10px;
 }
