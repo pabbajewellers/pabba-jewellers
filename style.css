@@ -198,7 +198,7 @@ footer,
 
 /* Menu toggle (hamburger) */
 .menu-toggle {
-  display: block;
+  display: none;
   font-size: 1.8rem;
   color: var(--primary-gold);
   cursor: pointer;
@@ -683,6 +683,7 @@ footer {
 
   .navbar { padding: 0 20px; height: 70px; }
   .logo h1 { font-size: 1.1rem; }
+  .menu-toggle { display: none; }
 
   .catalog-section {
     padding: 0 5% 40px !important;
