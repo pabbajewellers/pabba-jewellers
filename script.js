@@ -9,15 +9,15 @@ document.addEventListener('DOMContentLoaded', () => {
     initNavigation();
     initLanguageToggle();
     initScrollEffects();
-
-    // Apply the saved language immediately on load
     applyLanguage();
     
     // Check which page we are on and load appropriate data
     if (document.getElementById('collectionsGrid')) {
-        loadCollectionsHome();
+        // We MUST wait for the data to load before starting the slider
+        loadCollectionsHome().then(() => {
+            initCollectionSlider(); // Now it knows how many items exist!
+        });
         loadTestimonials();
-        initCollectionSlider();
     }
     
     if (document.getElementById('catalogGrid')) {
@@ -106,7 +106,7 @@ function applyLanguage() {
 
 /* --- HOME PAGE: COLLECTIONS --- */
 function loadCollectionsHome() {
-    fetch("collections.json")
+    return fetch("collections.json")
         .then(r => r.json())
         .then(cols => {
             const grid = document.getElementById("collectionsGrid");
@@ -489,7 +489,8 @@ function initCollectionSlider() {
     const nextBtn = document.getElementById('colNext');
     const prevBtn = document.getElementById('colPrev');
     
-    if (!grid) return;
+    // If buttons don't exist in HTML, stop JS to prevent errors
+    if (!grid || !nextBtn || !prevBtn) return;
 
     let currentIndex = 0;
     const items = grid.children;
@@ -512,8 +513,9 @@ function initCollectionSlider() {
             grid.style.transform = `translateX(0)`;
             return;
         } else {
-            nextBtn.style.display = 'flex';
-            prevBtn.style.display = 'flex';
+            // Use flex on desktop/tablet, hide on mobile if you prefer swipe
+            nextBtn.style.display = window.innerWidth <= 768 ? 'none' : 'flex';
+            prevBtn.style.display = window.innerWidth <= 768 ? 'none' : 'flex';
         }
 
         // Calculate the slide percentage
@@ -522,18 +524,18 @@ function initCollectionSlider() {
         grid.style.transform = `translateX(${movePercentage}%)`;
     }
 
-    nextBtn.addEventListener('click', () => {
+    // Explicitly clear existing listeners to prevent double-sliding
+    nextBtn.onclick = () => {
         const visibleCount = getVisibleCount();
-        // If we reach the end, loop back to the start
         if (currentIndex >= totalItems - visibleCount) {
             currentIndex = 0;
         } else {
             currentIndex++;
         }
         updateSlider();
-    });
+    };
 
-    prevBtn.addEventListener('click', () => {
+    prevBtn.onclick = () => {
         const visibleCount = getVisibleCount();
         if (currentIndex <= 0) {
             currentIndex = totalItems - visibleCount;
@@ -541,15 +543,17 @@ function initCollectionSlider() {
             currentIndex--;
         }
         updateSlider();
-    });
+    };
 
     // 2. Auto-slide Logic with "Pause on Hover"
     let autoSlideInterval = setInterval(() => nextBtn.click(), 5000);
 
-    grid.addEventListener('mouseenter', () => clearInterval(autoSlideInterval));
-    grid.addEventListener('mouseleave', () => {
+    // Pause on hover
+    grid.onmouseenter = () => clearInterval(autoSlideInterval);
+    grid.onmouseleave = () => {
+        clearInterval(autoSlideInterval); // Clear first to be safe
         autoSlideInterval = setInterval(() => nextBtn.click(), 5000);
-    });
+    };
 
     // 3. Handle Screen Resizing (Switching from Mobile to Desktop)
     window.addEventListener('resize', () => {
