@@ -957,7 +957,7 @@ footer {
     /* Remove bottom border from last TWO items only if they are the last row */
     .spec-item:nth-last-child(-n+2):nth-child(even),
     .spec-item:last-child:nth-child(odd) {
-        border-bottom: none;
+        /* border-bottom: none; */
     }
 }
 
