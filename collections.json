@@ -16,5 +16,11 @@
     "name_en": "Daily Wear",
     "name_te": "ప్రతిరోజు ధరించే నగలు",
     "image": "Daily Wear Necklace.jpg"
+  },
+  {
+    "id": "diamond1",
+    "name_en": "Diamond Jewellery 1",
+    "name_te": "డైమండ్ నగలు 1",
+    "image": "Diamond Statement Necklace.jpg"
   }
 ]
