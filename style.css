@@ -1107,7 +1107,22 @@ body.modal-open #backToTop,
 }
 
 @media (max-width: 768px) {
-    #collectionsGrid > div, #collectionsGrid > a { flex: 0 0 100%; } /* 1 item */
+    .carousel-viewport {
+        overflow-x: auto; /* Enable horizontal swiping */
+        scroll-snap-type: x mandatory; /* The 'magnetic' effect */
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch; /* High-performance momentum on iPhone */
+    }
+
+    #collectionsGrid > div, #collectionsGrid > a {
+        flex: 0 0 100%; /* Take up the whole screen width */
+        scroll-snap-align: center; /* Snap to center */
+        padding: 0 20px; /* Give some 'breathable' space on edges */
+    }
+
+    .slider-arrow {
+        display: none; /* Hide arrows on mobile to keep UI clean */
+    }
 }
 
 .slider-arrow {
