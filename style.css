@@ -1121,7 +1121,7 @@ body.modal-open #backToTop,
     }
 
     .slider-arrow {
-        display: none; /* Hide arrows on mobile to keep UI clean */
+        /* display: none; */ /* Hide arrows on mobile to keep UI clean */
     }
 }
 
