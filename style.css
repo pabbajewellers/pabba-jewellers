@@ -1,172 +1,1095 @@
-/* ================= ROOT SYSTEM ================= */
+/* --- GLOBAL VARIABLES: THE "SINGLE SOURCE OF TRUTH" --- */
 :root {
-  --primary-gold: #D4AF37;
-  --text-white: #eee;
-  --text-gray: #999;
-  --bg-black: #0b0b0b;
-  --heading-font: 'Cinzel', serif;
-  --body-font: 'Poppins', sans-serif;
-  --letter-spacing-gold: 3px;
-  --transition: all .3s ease;
+    --primary-gold: #D4AF37;
+    --text-white: #eeeeee;
+    --text-gray: #999999;
+    --bg-black: #0b0b0b;
+    /* Font Families */
+    --heading-font: 'Cinzel', serif;
+    --body-font: 'Poppins', sans-serif;
+    /* Unified Spacing */
+    --letter-spacing-gold: 3px;
+   /* --letter-spacing-ui: 1px; */
+    --transition-smooth: all 0.3s ease;
 }
 
-/* ================= BASE ================= */
-* { margin:0; padding:0; box-sizing:border-box; }
-html { scroll-behavior:smooth; scrollbar-gutter:stable; }
+/* --- LUXURY DARK SCROLLBAR --- */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--bg-black); }
+::-webkit-scrollbar-thumb { 
+    background: #333; 
+    border-radius: 10px; 
+    border: 2px solid var(--bg-black); 
+}
+::-webkit-scrollbar-thumb:hover { background: var(--primary-gold); }
+    /* Firefox support */
+    * {
+        scrollbar-width: thin;
+        scrollbar-color: #333 var(--bg-black);
+    }
+
+/* --- BASE STYLES --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html {
+    scrollbar-gutter: stable;
+}
+
 body {
-  font-family:var(--body-font);
-  background:var(--bg-black);
-  color:var(--text-white);
-  line-height:1.6;
-  padding-top:80px;
-  overflow-x:hidden;
+    font-family: var(--body-font); /* Site-wide default */
+    background: var(--bg-black);
+    color: var(--text-white);
+    line-height: 1.6;
+    padding-top: 80px; 
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    display: flex;
+    flex-direction: column;
 }
 
-/* Scrollbar */
-::-webkit-scrollbar{width:8px}
-::-webkit-scrollbar-track{background:var(--bg-black)}
-::-webkit-scrollbar-thumb{background:#333;border-radius:10px;border:2px solid var(--bg-black)}
-::-webkit-scrollbar-thumb:hover{background:var(--primary-gold)}
-*{scrollbar-width:thin;scrollbar-color:#333 var(--bg-black)}
-
-/* ================= TYPOGRAPHY ================= */
-h1,h2,h3,h4,.gold-title,.stat-box h3,.card h3{
-  font-family:var(--heading-font);
-  font-weight:400;
-  text-transform:uppercase;
-  letter-spacing:var(--letter-spacing-gold);
-  color:var(--primary-gold);
+/* --- THE GAP FIX (Catalog Specific) --- */
+body.catalog-page .catalog-section {
+    padding-top: 0px !important; /* Move content closer to the logo */
+}
+body.modal-open {
+    overflow: hidden;
+    touch-action: none; /* Stops mobile "rubber-banding" */
+    height: 100vh;
 }
 
-/* ================= NAVBAR ================= */
-.navbar{
-  position:fixed;top:0;left:0;width:100%;
-  display:flex;justify-content:space-between;align-items:center;
-  padding:15px 8%;background:rgba(0,0,0,.95);z-index:1000;
+/* --- UNIFIED HEADINGS (SITE-LEVEL) --- */
+/* This forces the stylish J and uniform look across every section */
+h1, h2, h3, h4, .gold-title, .stat-box h3, .card h3 {
+    font-family: var(--heading-font) !important;
+    font-weight: 400 !important;
+    text-transform: uppercase !important;
+    letter-spacing: var(--letter-spacing-gold) !important;
+    color: var(--primary-gold) !important;
+    text-shadow: none !important;
 }
-.logo h1{font-size:1.25rem}
-.telugu-name{font-size:.7rem;color:var(--text-gray);letter-spacing:1px;margin-top:4px}
-
-/* Nav Links */
-.nav-links{display:flex;gap:25px;list-style:none;align-items:center}
-.nav-links a{color:#eee;text-transform:uppercase;font-size:.85rem;letter-spacing:1px;text-decoration:none;position:relative}
-.nav-links a:hover{color:var(--primary-gold)}
-.nav-links a::after{content:'';position:absolute;width:0;height:1px;bottom:-5px;left:0;background:var(--primary-gold);transition:.3s}
-.nav-links a:hover::after{width:100%}
-
-.menu-toggle{display:none;font-size:1.8rem;color:var(--primary-gold);cursor:pointer}
-
-/* ================= SECTIONS ================= */
-section{padding:60px 8%;text-align:center}
-
-/* ================= CARDS ================= */
-.grid{display:grid;gap:30px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
-.card{background:#151515;border:1px solid #222;border-radius:4px;overflow:hidden;transition:var(--transition);cursor:pointer}
-.card:hover{transform:translateY(-10px);border-color:var(--primary-gold)}
-.card img{width:100%;height:280px;object-fit:cover;transition:.5s}
-.card:hover img{transform:scale(1.05)}
-
-/* ================= CATALOG GRID ================= */
-.catalog-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:30px;
-  max-width:1400px;
-  margin:0 auto;
+.stat-box h3 {
+    font-size: 1.5rem !important; /* Larger numbers */
+    margin-bottom: 5px;
+}
+section {
+    padding: 60px 8%;
+    text-align: center;
+    scroll-margin-top: 80px; 
 }
 
-/* ================= PRODUCT CARD ================= */
-.product-card{
-  background:#111;
-  border:1px solid #222;
-  border-radius:8px;
-  overflow:hidden;
-  display:flex;
-  flex-direction:column;
-  transition:var(--transition);
-}
-.product-card:hover{border-color:var(--primary-gold);transform:translateY(-5px)}
-.product-card img{width:100%;aspect-ratio:1/1;object-fit:cover}
-.product-info{padding:15px;flex:1;display:flex;flex-direction:column;justify-content:space-between}
+/* --- SECTION SPECIFIC SCALING --- */
+.navbar .logo h1 { font-size: 1.25rem !important; } 
+section h2 { font-size: 2rem; margin-bottom: 40px; } 
+.card h3 { font-size: 1rem; margin-top: 15px; } 
 
-/* ================= MODAL SYSTEM ================= */
-#productModal{
-  position:fixed;inset:0;display:none;
-  align-items:center;justify-content:center;
-  background:rgba(0,0,0,.9);
-  backdrop-filter:blur(10px);
-  z-index:3000;padding:20px;
+/* --- NAVIGATION & FOOTER (UI TEXT) --- */
+.nav-links a, 
+.lang-btn, 
+footer, 
+.stat-box p {
+    font-family: var(--body-font);
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--text-gray);
+    font-size: 0.85rem !important; /* Ensures menu is readable */
+    letter-spacing: 1px;
 }
 
-.modal-content{
-  background:#000;border:1px solid var(--primary-gold);
-  border-radius:12px;
-  width:95%;max-width:1100px;height:80vh;
-  display:flex;flex-direction:row;overflow:hidden;
+/* --- STICKY NAVBAR --- */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 8%;
+    background: rgba(0, 0, 0, 0.95);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    transition: all 0.3s ease;
 }
 
-.modal-body{
-  display:grid;grid-template-columns:1fr 1fr;width:100%;
+.navbar.scrolled {
+    padding: 12px 8%;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(230, 193, 90, 0.3);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.5);
 }
 
-.carousel-container{
-  background:#050505;display:flex;align-items:center;justify-content:center;
-  overflow:hidden;border-radius:12px 0 0 12px;
-}
-.carousel-track{display:flex;width:100%;transition:transform .4s ease}
-.carousel-track img{width:100%;flex:0 0 100%;object-fit:contain}
-
-.modal-details{
-  padding:40px;overflow-y:auto;
-  display:flex;flex-direction:column;justify-content:center;
-  border-left:1px solid rgba(212,175,55,.2)
+/* --- LOGO (RESTORED EXACT STYLE) --- */
+.logo {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    text-decoration: none !important;
 }
 
-/* ================= SPECS GRID ================= */
-.specs-container{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  border:1px solid rgba(212,175,55,.2);
-  border-radius:8px;
-  margin:25px 0;
-}
-.spec-item{padding:15px;border-bottom:1px solid rgba(212,175,55,.2)}
-.spec-item:nth-child(odd){border-right:1px solid rgba(212,175,55,.2)}
-.spec-item:nth-last-child(-n+2){border-bottom:none}
-
-/* ================= TRUST GRID ================= */
-.trust{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:20px;
-  padding:60px 8%;
-  background:#111;
+.logo h1 {
+    font-family: var(--heading-font) !important;
+    font-size: 1.25rem !important; 
+    color: var(--primary-gold) !important;
+    margin: 0 !important;
+    text-transform: uppercase !important;
+    line-height: 1.2;
+    font-weight: 400 !important; 
+    letter-spacing: 3px !important; 
+    text-shadow: none !important; 
+    display: block !important;
 }
 
-/* ================= RESPONSIVE ================= */
-
-/* Tablet */
-@media (max-width:1024px){
-  .catalog-grid{grid-template-columns:repeat(2,1fr)}
-  .trust{grid-template-columns:repeat(2,1fr)}
+.telugu-name {
+    text-transform: none !important;
+    font-family: var(--body-font);
+    font-size: 0.7rem;
+    color: var(--text-gray); 
+    font-weight: 300; 
+    letter-spacing: 1px;
+    margin-top: 4px;
+    display: block;
 }
 
-/* Mobile */
-@media (max-width:768px){
-  body{padding-top:70px}
-  .navbar{height:70px;padding:0 20px}
-  .menu-toggle{display:block}
-  .nav-links{
-    position:fixed;top:0;right:-100%;
-    height:100vh;width:280px;
-    background:#0b0b0bf2;
-    flex-direction:column;padding-top:100px;
-    transition:.4s;
-  }
-  .nav-links.active{right:0}
-  .catalog-grid{grid-template-columns:1fr}
-  .modal-content{flex-direction:column;height:auto;max-height:95vh}
-  .modal-body{grid-template-columns:1fr}
-  .carousel-container{border-radius:12px 12px 0 0}
-  .specs-container{grid-template-columns:1fr}
+/* --- NAVIGATION LINKS --- */
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+    align-items: center;
+    /* ... your existing drawer styles ... */
+    position: fixed;
+    top: 0;
+    right: -100%; /* Hidden by default */
+    width: 250px; /* Or your preferred width */
+    height: 100vh;
+    z-index: 2000; /* High number to cover the navbar */
+    transition: 0.3s ease-in-out;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #eee;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    position: relative;
+    transition: 0.3s;
+}
+
+.nav-links a:hover { color: var(--primary-gold) !important; }
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0; height: 1px;
+    bottom: -5px; left: 0;
+    background-color: var(--primary-gold);
+    transition: width 0.4s ease;
+}
+
+.nav-links a:hover::after { width: 100%; }
+
+/* Hide the hamburger icon when the menu is active */
+.nav-links.active ~ .menu-toggle {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.lang-btn {
+    background: transparent;
+    border: 1px solid var(--primary-gold);
+    color: var(--primary-gold);
+    padding: 5px 12px;
+    cursor: pointer;
+    font-family: inherit;
+    transition: 0.3s;
+}
+
+.lang-btn:hover { background: var(--primary-gold); color: #000; }
+
+/* --- MOBILE MENU TOGGLE --- */
+.menu-toggle {
+    display: none;
+    font-size: 1.8rem;
+    color: var(--primary-gold);
+    cursor: pointer;
+    z-index: 1002;
+}
+
+/* --- HERO & GRIDS --- */
+.hero {
+    height: 85vh;
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url("images/hero.jpg") center/cover no-repeat;
+    display: flex; align-items: center; justify-content: center; text-align: center;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.card {
+    background: #151515; border-radius: 4px; overflow: hidden;
+    cursor: pointer; border: 1px solid #222;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.card:hover { transform: translateY(-10px); border-color: var(--primary-gold); }
+
+.card img {
+    width: 100%; height: 280px; object-fit: cover;
+    filter: grayscale(20%); transition: 0.5s;
+}
+
+.card:hover img { filter: grayscale(0%); transform: scale(1.05); }
+
+/* --- GRID ANCHOR FIX --- */
+#collectionsGrid a, 
+#catalogGrid a {
+    text-decoration: none !important;
+    color: inherit !important; 
+    display: block;
+}
+
+/* --- CATALOG & PRODUCT VIEW --- */
+.catalog-section { padding: 40px 8% 50px; min-height: 80vh; flex: 1 0 auto; }
+.catalog-grid {
+    display: grid;
+    /* Forces 4 columns on large screens */
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 30px;
+    width: 100%;
+    max-width: 1400px; /* Allows the grid to spread out more on desktop */
+    margin: 0 auto;
+    
+    /* grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); */
+    /*padding: 40px 0; */
+    /* justify-content: center; */ /* This centers the cards when only 2 exist */
+    /* max-width: 1200px; */
+}
+
+.product-card {
+    /* background: #151515;  */
+    border: 1px solid #222;
+    border-radius: 8px; overflow: hidden; transition: 0.3s;
+    cursor: pointer; display: flex; flex-direction: column;
+    background: #111;
+    padding-bottom: 20px;
+    transition: var(--transition-smooth);
+    opacity: 0;
+    animation: fadeIn 0.5s ease forwards;
+}
+
+.product-card:hover { 
+    border-color: var(--primary-gold); 
+    transform: translateY(-5px);    
+    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.1);
+}
+.product-card img { width: 100%; aspect-ratio: 1/1; object-fit: cover; }
+.product-info { padding: 15px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
+
+/* Style the "View Details" Button to match Gold theme */
+.product-card button {
+    background: transparent;
+    border: 1px solid var(--primary-gold);
+    color: var(--primary-gold);
+    padding: 8px 20px;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: 0.3s;
+    width: 80%; /* Don't let it touch the edges */
+    margin: 10px auto 0;
+    display: block;
+}
+
+.product-card button:hover {
+    background: var(--primary-gold);
+    color: #000;
+}
+
+/* Fix the Item Counter Style */
+#itemCount {
+    font-family: var(--body-font);
+    color: var(--text-gray);
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-top: 10px;
+    display: block;
+    text-align: center; /* Ensures it is centered under the title */
+    width: 100%;
+}
+
+/* --- MODAL (AMAZON STYLE) --- */
+.modal-content::-webkit-scrollbar {
+    display: none;
+}
+@keyframes modalSlideUp {
+    from { opacity: 0; transform: translateY(30px) scale(0.95); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+.modal-body { 
+    display: flex; 
+    flex-direction: column; /* Stacked layout like reference */
+    align-items: center;
+}
+.modal-details { 
+    width: 100%; 
+    padding: 0;
+    background: transparent;
+}
+.modal-details h2 {
+    font-size: 1.6rem !important;
+    margin-bottom: 12px !important;
+    color: var(--primary-gold) !important;
+}
+.modal-details p {
+    color: #ccc;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+.whatsapp-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    background: transparent;
+    color: var(--text-white);
+    padding: 12px 30px;
+    border: 1px solid rgba(212, 175, 55, 0.8);
+    border-radius: 50px; /* Pill shape like reference */
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.8rem;
+    transition: all 0.4s ease;
+    cursor: pointer;
+    text-decoration: none;
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.1);
+    margin-top: 20px;
+}
+.whatsapp-btn:hover {
+    background: var(--primary-gold);
+    color: #000;
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+}
+.whatsapp-btn:active {
+    transform: scale(0.96); /* Button physically "presses" in when tapped */
+    background: rgba(212, 175, 55, 0.2);
+}
+
+/* --- TRUST & STATS --- */
+.trust {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columns for Desktop */
+    gap: 20px;
+    padding: 60px 8%;
+    background: #111;
+    border-top: 1px solid #222;
+    border-bottom: 1px solid #222;
+    text-align: center;
+}
+
+/* --- BUTTONS --- */
+.back-to-top {
+    /* 1. Breaking the Flex-Link */
+    position: fixed !important;
+    
+    /* 2. Precision Placement with Safe Area Support */
+    bottom: calc(30px + env(safe-area-inset-bottom)) !important; 
+    right: 20px !important;
+    
+    /* 3. Sizing & Style */
+    width: 48px !important; /* Slightly larger for easier thumb-tap on iPhone */
+    height: 48px !important;
+    background: var(--primary-gold) !important;
+    color: #000 !important;
+    border-radius: 50%;
+    border: none;
+    
+    /* 4. Alignment */
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    
+    /* 5. Depth & Visibility */
+    z-index: 99999 !important; /* Extra high for mobile */
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    /* 6. Crucial for iOS Safari */
+    -webkit-transform: translateZ(0); /* Forces GPU rendering */
+    transform: translateZ(0);
+}
+
+.back-to-top.show { 
+    opacity: 1 !important;
+    visibility: visible !important; 
+}
+.back-to-top:hover {
+    transform: translateY(-5px); /* Nice little gold-standard lift effect */
+}
+
+/* --- FOOTER (FIXED ALIGNMENT) --- */
+footer {
+    text-align: center !important;
+    padding: 40px 20px;
+    background: #000;
+    color: #555;
+    width: 100%;
+    font-size: 0.8rem;
+    border-top: 1px solid #222;
+    flex-shrink: 0;
+}
+
+/* --- BREADCRUMB --- */
+.breadcrumb {
+    text-align: left; margin-bottom: 25px; font-size: 0.75rem;
+    color: #666; letter-spacing: 1px;
+}
+.breadcrumb a { color: var(--primary-gold) !important; text-decoration: none !important; text-transform: uppercase; }
+
+/* Unified Styling for Close Buttons (Menu & Modal) */
+.close-menu, .close-btn {
+    font-size: 2rem;
+    color: var(--primary-gold);
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05); /* Subtle dark circle */
+    line-height: 1;
+    user-select: none;
+}
+
+.close-menu:hover, .close-btn:hover {
+    background: var(--primary-gold);
+    color: #000;
+    transform: rotate(90deg); /* The "Luxury" rotation effect */
+}
+
+/* Specific position for Mobile Menu X */
+.close-menu {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+/* =============================================================
+   UNIFIED RESPONSIVE LOGIC (No Conflicts)
+   ============================================================= */
+
+/* 1. TABLETS & SMALL DESKTOPS */
+@media (max-width: 1024px) {
+    .catalog-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* 2. MOBILE & IPHONE 15 PRO (The "Cuteness" & Gap Fix) */
+@media (max-width: 768px) {
+    /* Kill Global Gaps */
+    body { padding-top: 70px !important; }
+    body.modal-open {
+        overflow: hidden;
+        position: fixed; /* Prevents background scroll on iOS Safari */
+        width: 100%;
+    }
+    body.catalog-page { padding-top: 70px !important; }
+    
+    .navbar { padding: 0 20px; height: 70px; }
+    .logo h1 { font-size: 1.1rem !important; }
+
+    /* Catalog Spacing Fix */
+    .catalog-section {
+        padding: 0px 5% 40px !important; 
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* Shining Breadcrumb */
+    .breadcrumb {
+        width: 100%;
+        text-align: left;
+        margin-bottom: 10px !important;
+        font-size: 0.7rem !important;
+        display: block !important; /* Force visibility */
+        padding-left: 5px;
+        margin-top: 25px !important;
+    }
+
+    /* FORCE 1 ITEM PER ROW - No more skinny cards */
+    .catalog-grid {
+        grid-template-columns: 1fr !important;
+        justify-items: center;
+    }
+
+    /* The "Cute" Card Proportion */
+    .product-card {
+        max-width: 350px;
+    }
+
+    .product-card img {
+        height: 300px !important; /* Prevents "Long" look */
+        object-fit: cover !important;
+    }
+
+    /* Typography & Spacing Scaling */
+    .catalog-section h2 {
+        font-size: 1.6rem !important;
+        margin-bottom: 5px !important;
+    }
+
+    .trust {
+        grid-template-columns: repeat(2, 1fr); 
+        padding: 40px 5%;
+        gap: 20px 10px; /* Adjusted gap for tighter screens */
+    }
+    .stat-box {
+        padding: 10px; /* Prevents text hitting edges */
+    }
+    .stat-box h3 {
+        font-size: 1.1rem !important; /* Slightly smaller to prevent line breaks */
+        white-space: nowrap; /* Keeps "1000+" on one line */
+    }
+    .stat-box p {
+        font-size: 0.65rem !important;
+    }
+    #itemCount {
+        margin-bottom: 20px !important;
+        font-size: 0.75rem !important;
+        text-align: left; 
+        padding-left: 5px;
+    }
+
+    /* Navigation Menu */
+    .menu-toggle { display: block !important; order: 2; }
+    .nav-links {
+        position: fixed; top: 0; right: -100%; 
+        background: rgba(11, 11, 11, 0.95); /* Semi-transparent */
+        backdrop-filter: blur(10px);
+        width: 280px; height: 100vh; flex-direction: column;
+        padding-top: 100px; gap: 20px; transition: 0.4s; z-index: 1001;
+        border-left: 1px solid rgba(212, 175, 55, 0.2);
+    }
+    .nav-links.active { right: 0; display: flex; }
+
+    .modal-body { 
+        flex-direction: column; 
+    }
+    
+    #modalImg { 
+        height: 250px;
+    }
+    
+    .modal-details { 
+        width: 100%; 
+        padding: 25px; 
+        text-align: center;
+    }
+
+    .modal-details h2 {
+        font-size: 1.4rem !important;
+    }
+    .modal-content {
+        display: block !important;
+        overflow-y: auto !important;
+        height: auto;
+        max-height: 95vh;
+    }
+    .close-menu {
+        display: flex !important; /* Ensure it's visible in the drawer */
+        z-index: 2001; /* Make sure it's above the nav-links content */
+    }
+    .carousel-container {
+        border-radius: 12px 12px 0 0;
+        margin-bottom: 0;
+    }    
+    .carousel-track img {
+        height: auto !important;
+        max-height: 50vh !important; /* Prevents the image from taking over the whole screen */
+        object-fit: contain !important; /* Shows the WHOLE image, no cropping */
+    }
+    #productModal {
+        padding: 10px; /* More room for content on small screens */
+    }
+    /* Fix: Keep the Close button visible even if the user scrolls down the modal */
+    #modalCloseBtn {
+        position: fixed !important;
+        top: 20px !important;
+        right: 20px !important;
+        box-shadow: 0 0 15px rgba(0,0,0,0.5);
+    }
+}
+
+/* 3. DESKTOP 4-COLUMN (Premium View) */
+@media (min-width: 1025px) {
+    .catalog-grid {
+        grid-template-columns: repeat(4, 1fr) !important;
+        gap: 30px !important;
+        padding: 40px 0 !important;
+    }
+    .modal-body {
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* Precise 50/50 split */
+        align-items: center; /* Vertically centers everything */
+        gap: 0; 
+    }
+    .carousel-container {
+        max-width: 100%;
+        margin: 0;
+        border-radius: 12px 0 0 12px; /* Smooth rounded corners only on the left */
+    }
+    .modal-details {
+        padding: 40px;
+        max-height: 80vh;
+        overflow-y: auto; /* Allow text scroll if description is long */
+    }
+}
+
+/* --- THE SHINING BREADCRUMB (Universal) --- */
+.breadcrumb a { 
+    color: var(--primary-gold) !important; 
+    font-weight: 600;
+    text-shadow: 0 0 5px rgba(212, 175, 55, 0.2);
+}
+
+/* Styling the separator slash for luxury feel */
+.breadcrumb span {
+    margin: 0 8px;
+    color: #444; /* Dulls the slash so the gold text pops */
+}
+
+/* Thumbnails Gallery */
+.thumb-gallery {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.thumb-img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border: 1px solid #333;
+    border-radius: 4px;
+    cursor: pointer;
+    opacity: 0.5;
+    transition: 0.3s;
+}
+
+.thumb-img.active-thumb, .thumb-img:hover {
+    opacity: 1;
+    border-color: var(--primary-gold);
+}
+
+/* NEW SPECIFICATION GRID */
+.specs-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Side-by-side saves vertical space */
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    margin: 25px 0;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.02);
+}
+
+/* Specs Grid */
+.spec-item {
+    padding: 15px;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+    text-align: left;
+}
+/* Add vertical divider only for even items in a 2-col grid */
+.spec-item:nth-child(odd) {
+    border-right: 1px solid rgba(212, 175, 55, 0.2);
+}
+/* Remove bottom border on the last two items */
+.spec-item:nth-last-child(-n+2) {
+    border-bottom: none;
+}
+
+.spec-label {
+    color: var(--primary-gold);
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 0.75rem; /* Using the slightly larger one for legibility */
+    letter-spacing: 1px;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.spec-value {
+    color: #ffffff;
+    font-size: 0.95rem;
+}
+
+/* Mobile Tweak for Specs */
+@media (max-width: 480px) {
+    .specs-container {
+        grid-template-columns: 1fr !important; /* Forces single column on tiny screens */
+    }
+    
+    .spec-item:nth-child(odd) {
+        border-right: none !important; /* Removes the side divider when stacked */
+        border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+    }
+}
+
+/* --- UNIFIED MODAL IMAGE SYSTEM --- */
+
+/* 1. The Outer Container */
+.carousel-container {
+    position: relative;
+    width: 100%;
+    max-width: 450px; /* Slightly larger for premium feel */
+    margin: 0 auto 20px;
+    overflow: hidden; /* This is the "window" the user looks through */
+    border-radius: 12px;
+    background: #000; /* Backdrop for the images */
+    touch-action: pan-y;
+}
+/* 2. The Sliding Track (The "Train" of images) */
+.carousel-track {
+    display: flex;
+    width: 100%;
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1); /* Smoother curve */
+    will-change: transform; /* Hint to the browser for GPU acceleration */
+}
+/* 3. The Images themselves */
+.carousel-track img {
+    /* Critical: Each image MUST be the full width of the container */
+    width: 100%; 
+    flex: 0 0 100%; /* Prevents images from shrinking or growing */    
+    aspect-ratio: 1/1;
+    object-fit: contain; /* Prevents distortion of jewelry photos */
+    cursor: zoom-in;
+    transition: transform 0.4s ease;
+}
+/* Zoom state */
+.carousel-track img.zoomed {
+    transform: scale(1.5);
+    cursor: zoom-out;
+    z-index: 50;
+    /* ADD THIS: Ensures the image stays centered while zooming */
+    transform-origin: center;
+}
+/* If dots-container or nav-arrow is empty or hidden, ensure layout doesn't shift */
+.carousel-container:has(.hidden) {
+    cursor: default;
+}
+/* Ensure images don't stretch if only one exists */
+.carousel-track:only-child img {
+    flex: 0 0 100%;
+}
+/* --- NAVIGATION UI --- */
+.nav-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.6);
+    color: var(--primary-gold);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    padding: 12px 15px;
+    cursor: pointer;
+    z-index: 100;
+    border-radius: 50%; /* Circle looks better for luxury */
+    transition: 0.3s;
+}
+.nav-arrow:hover { background: var(--primary-gold); color: #000; }
+.prev { left: 10px; }
+.next { right: 10px; }
+
+/* Pagination Dots */
+.dots-container {
+    position: absolute;
+    bottom: 15px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    z-index: 100;
+}
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(0,0,0,0.5);
+    cursor: pointer;
+    transition: 0.3s;
+}
+.dot.active {
+    background: var(--primary-gold);
+    transform: scale(1.2);
+}
+/* Hide arrows/dots if not needed */
+.hidden { display: none !important; }
+
+/* --- UNIFIED MODAL SYSTEM --- */
+#productModal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 3000;
+    background: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    align-items: center; 
+    justify-content: center;
+    padding: 20px;
+    scrollbar-width: none; /* Hide scrollbar Firefox */
+}
+
+#productModal::-webkit-scrollbar {
+    display: none; /* Hide scrollbar Chrome/Safari */
+}
+
+.modal-content {
+    position: relative !important; /* This is the anchor */
+    background: #000;
+    border: 1px solid #d4af37;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: row; 
+    width: 95%;
+    max-width: 1100px;
+    max-height: 90vh;
+    overflow: hidden; /* Keeps carousel inside borders */
+}
+
+/* Floating Close Button - reclaiming top space */
+#modalCloseBtn {
+    position: absolute !important; 
+    top: 15px !important;
+    right: 15px !important;
+    left: auto !important; /* Prevents it from sticking to the left */
+    z-index: 9999; /* Makes sure it stays above images */
+    
+    /* Styling */
+    background: #d4af37;
+    color: #000;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+}
+
+#modalCloseBtn:hover {
+    background: var(--primary-gold);
+    color: #000;
+    transform: rotate(90deg);
+}
+
+/* On Desktop (2 cols) */
+@media (min-width: 481px) {
+    .spec-item:nth-child(odd) {
+        border-right: 1px solid rgba(212, 175, 55, 0.2);
+    }
+    /* Remove bottom border from last TWO items only if they are the last row */
+    .spec-item:nth-last-child(-n+2):nth-child(even),
+    .spec-item:last-child:nth-child(odd) {
+        border-bottom: none;
+    }
+}
+
+/* Hide Back to Top whenever a modal or menu is covering the screen */
+body.modal-open #backToTop,
+.nav-links.active ~ #backToTop {
+    visibility: hidden !important;
+    opacity: 0 !important;
+}
+
+/* 2. Dedicate a full row to Stones and clean up the grid */
+.spec-item.full-row {
+    grid-column: 1 / -1;
+    border-left: 3px solid var(--primary-gold) !important;
+    background: linear-gradient(90deg, rgba(212, 175, 55, 0.08), transparent);
+    padding: 20px; /* Extra breathing room */
+}
+
+/* Ensure the label in the full row looks premium */
+.spec-item.full-row .spec-label {
+    text-align: center;
+    letter-spacing: 2px;
+}
+
+.spec-item.full-row .spec-value {
+    color: var(--primary-gold);
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+}
+
+@media (max-width: 1100px) {
+    .catalog-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        padding: 0 20px;
+        gap: 20px;
+    }
+    .trust {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .catalog-grid {
+        grid-template-columns: 1fr; /* Mobile view */
+        justify-items: center;
+    }
+    .product-card {
+        width: 100%;
+        max-width: 350px; /* The "Cuteness" constraint */
+    }
+}
+
+/* --- DESKTOP MODAL REFINEMENT (1101px+) --- */
+@media (min-width: 1101px) {
+    /* Set a consistent size for the popup box */
+    .modal-content {
+        height: 80vh; 
+        max-height: 700px; /* Prevents it from getting too tall on giant monitors */
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* Force the body to fill the content height */
+    .modal-body {
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* Exact 50/50 split */
+        flex: 1; 
+        overflow: hidden; /* Keeps everything contained */
+        align-items: stretch;
+    }
+
+    /* Image Column: Perfect Centering */
+    .carousel-container {
+        height: 100% !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+        background: #050505; /* Contrast backdrop */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 11px 0 0 11px;
+    }
+
+    .carousel-track {
+        height: 100%;
+        align-items: center;
+    }
+
+    .carousel-track img {
+        /* This is the secret sauce for your 800x800 images */
+        max-height: 90%; 
+        max-width: 90%;
+        width: auto !important;
+        height: auto !important;
+        object-fit: contain !important;
+    }
+
+    /* Text Column: Balanced Padding */
+    .modal-details {
+        height: 100%;
+        padding: 50px !important;
+        overflow-y: auto; /* Scrollable text if it exceeds 80vh */
+        display: flex;
+        flex-direction: column;
+        justify-content: center; /* Keeps text vertically centered against the image */
+        border-left: 1px solid rgba(212, 175, 55, 0.2);
+    }
+}
+
+/* --- CONSOLIDATED DESKTOP MODAL FIX (769px and up) --- */
+@media (min-width: 769px) {
+    /* 1. Reset Mobile Behaviors */
+    .close-menu, .nav-links .close-btn { display: none !important; }
+    .nav-links {
+        position: static !important;
+        display: flex !important;
+        flex-direction: row !important;
+        background: transparent !important;
+        width: auto !important;
+        height: auto !important;
+    }
+
+    /* 2. Modal Structure - The Consistency Fix */
+    .modal-content {
+        display: flex;
+        flex-direction: row;
+        align-items: stretch; /* Forces left and right columns to same height */
+        height: 80vh;
+        max-height: 750px;
+        width: 95%;
+        max-width: 1100px;
+    }
+
+    .modal-body {
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* Exact 50/50 split */
+        width: 100%;
+        height: 100%;
+        gap: 0; /* Remove gap to keep the border-left clean */
+    }
+
+    /* 3. Image Side (The Alignment Secret) */
+    .carousel-container {
+        height: 100% !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+        background: #050505; /* Darker backdrop makes jewelry pop */
+        display: flex;
+        align-items: center; /* Center image vertically */
+        justify-content: center; /* Center image horizontally */
+        border-radius: 11px 0 0 11px;
+    }
+
+    .carousel-track {
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }
+
+    .carousel-track img {
+        max-height: 85% !important; /* Breathing room inside the modal */
+        max-width: 90% !important;
+        width: auto !important; /* Keep aspect ratio of your 800x800 */
+        height: auto !important;
+        object-fit: contain !important;
+    }
+
+    /* 4. Details Side */
+    .modal-details {
+        flex: 1;
+        height: 100%;
+        padding: 40px 50px !important;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center; /* Vertically centers the text content */
+        text-align: left;
+        border-left: 1px solid rgba(212, 175, 55, 0.2);
+    }
 }
