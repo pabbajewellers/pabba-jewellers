@@ -1037,7 +1037,7 @@ body.modal-open #backToTop,
     #collectionsGrid .card {
         flex: 0 0 100%;
     }
-    .slider-arrow { display: none; } /* Use touch-swipe on mobile */
+    /*.slider-arrow { display: none; } */ /* Use touch-swipe on mobile */
     .carousel-viewport { overflow-x: auto; scroll-snap-type: x mandatory; }
     #collectionsGrid .card { scroll-snap-align: center; }
 }
