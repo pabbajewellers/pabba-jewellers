@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (document.getElementById('collectionsGrid')) {
         loadCollectionsHome();
         loadTestimonials();
+        initCollectionSlider();
     }
     
     if (document.getElementById('catalogGrid')) {
@@ -482,3 +483,82 @@ function handleSwipe() {
         moveSlide(-1); // Changed from movePrev()
     }
 }
+
+function initCollectionSlider() {
+    const grid = document.getElementById('collectionsGrid');
+    const nextBtn = document.getElementById('colNext');
+    const prevBtn = document.getElementById('colPrev');
+    
+    if (!grid) return;
+
+    let currentIndex = 0;
+    const items = grid.children;
+    const totalItems = items.length;
+
+    // 1. Determine how many items are visible at once based on screen width
+    function getVisibleCount() {
+        if (window.innerWidth <= 768) return 1;
+        if (window.innerWidth <= 1024) return 2;
+        return 3; // Desktop
+    }
+
+    function updateSlider() {
+        const visibleCount = getVisibleCount();
+        
+        // Hide arrows if we have fewer items than the screen can show
+        if (totalItems <= visibleCount) {
+            nextBtn.style.display = 'none';
+            prevBtn.style.display = 'none';
+            grid.style.transform = `translateX(0)`;
+            return;
+        } else {
+            nextBtn.style.display = 'flex';
+            prevBtn.style.display = 'flex';
+        }
+
+        // Calculate the slide percentage
+        // We use 100 / visibleCount to move exactly one 'frame'
+        const movePercentage = -(currentIndex * (100 / visibleCount));
+        grid.style.transform = `translateX(${movePercentage}%)`;
+    }
+
+    nextBtn.addEventListener('click', () => {
+        const visibleCount = getVisibleCount();
+        // If we reach the end, loop back to the start
+        if (currentIndex >= totalItems - visibleCount) {
+            currentIndex = 0;
+        } else {
+            currentIndex++;
+        }
+        updateSlider();
+    });
+
+    prevBtn.addEventListener('click', () => {
+        const visibleCount = getVisibleCount();
+        if (currentIndex <= 0) {
+            currentIndex = totalItems - visibleCount;
+        } else {
+            currentIndex--;
+        }
+        updateSlider();
+    });
+
+    // 2. Auto-slide Logic with "Pause on Hover"
+    let autoSlideInterval = setInterval(() => nextBtn.click(), 5000);
+
+    grid.addEventListener('mouseenter', () => clearInterval(autoSlideInterval));
+    grid.addEventListener('mouseleave', () => {
+        autoSlideInterval = setInterval(() => nextBtn.click(), 5000);
+    });
+
+    // 3. Handle Screen Resizing (Switching from Mobile to Desktop)
+    window.addEventListener('resize', () => {
+        currentIndex = 0; // Reset to avoid math errors during resize
+        updateSlider();
+    });
+
+    updateSlider(); // Initial call
+}
+
+// Call this after your data has loaded into the collectionsGrid
+// document.addEventListener('DOMContentLoaded', initCollectionSlider);
