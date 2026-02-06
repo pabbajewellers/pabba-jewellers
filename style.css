@@ -1221,3 +1221,33 @@ body.modal-open #backToTop,
 .collection-card:hover .view-all-btn {
     opacity: 1;
 }
+
+/* Container to center the button */
+.view-all-container {
+    text-align: center;      /* Standard way to center inline-block elements */
+    margin-top: 40px;        /* Adds space between the slider and the button */
+    padding-bottom: 20px;
+}
+
+/* Luxury Gold Button Styling */
+.gold-button {
+    display: inline-block;   /* Allows padding and margin while staying centered */
+    padding: 12px 30px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-decoration: none;
+    color: #d4af37;          /* Metallic Gold Color */
+    border: 2px solid #d4af37;
+    border-radius: 5px;      /* Slightly rounded for a modern look */
+    transition: all 0.3s ease; /* Smooth hover transition */
+}
+
+/* Hover Effect: Inverts colors for interactivity */
+.gold-button:hover {
+    background-color: #d4af37;
+    color: #1a1a1a;          /* Dark background for contrast */
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4); /* Subtle gold glow */
+    transform: translateY(-3px); /* Lifts the button slightly on hover */
+}
