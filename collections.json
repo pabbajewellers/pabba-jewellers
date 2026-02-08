@@ -1,24 +1,24 @@
 [
   {
-    "id": "bridal",
+    "id": 1,
     "name_en": "Bridal Collection",
     "name_te": "వధువు కలెక్షన్",
     "image": "Bridal Gold Necklace Set.jpg"
   },
   {
-    "id": "diamond",
+    "id": 2,
     "name_en": "Diamond Jewellery",
     "name_te": "డైమండ్ నగలు",
     "image": "Diamond Statement Necklace.jpg"
   },
   {
-    "id": "daily",
+    "id": 3,
     "name_en": "Daily Wear",
     "name_te": "ప్రతిరోజు ధరించే నగలు",
     "image": "Daily Wear Necklace.jpg"
   },
   {
-    "id": "diamond1",
+    "id": 4,
     "name_en": "Diamond Jewellery 1",
     "name_te": "డైమండ్ నగలు 1",
     "image": "Diamond Statement Necklace.jpg"
