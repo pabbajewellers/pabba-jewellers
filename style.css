@@ -1432,3 +1432,12 @@ body.modal-open #backToTop,
     font-size: 0.8rem;
     color: #666;
 }
+
+.breadcrumb a:hover {
+    text-decoration: underline;
+}
+
+.breadcrumb span {
+    margin: 0 10px;
+    color: #555;
+}
