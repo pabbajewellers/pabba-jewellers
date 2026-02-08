@@ -123,15 +123,32 @@ function loadCollectionsHome() {
 
 /* --- CATALOG PAGE: LOGIC --- */
 async function loadCatalogPage() {
+    const params = new URLSearchParams(window.location.search);
+    const categoryID = params.get('category');
+    
     try {
+        // 1. Fetch ONLY the small Collections file first (Fast!)
+        const collRes = await fetch('collections.json');
+        const allCollections = await collRes.json();
+
+        // 2. Find the names for the breadcrumb immediately
+        const currentCollection = allCollections.find(c => c.id === categoryID);
+
+        if(currentCollection) {
+            updateBreadcrumbs(currentCollection.name_en, currentCollection.name_te);
+            // Update the Page Title H1 as well
+            document.getElementById('categoryTitle').textContent = 
+                currentLang === 'te' ? currentCollection.name_te : currentCollection.name_en;
+        }
+        
         const response = await fetch('products.json');
         allProducts = await response.json();
         
-        const params = new URLSearchParams(window.location.search);
-        const categoryFilter = params.get('category');
+        //const params = new URLSearchParams(window.location.search);
+        //const categoryFilter = params.get('category');
 
         // BUILD THE BREADCRUMB
-        updateBreadcrumbs(categoryFilter);
+        //updateBreadcrumbs(categoryFilter);
         
         if (categoryFilter) {
             const titleEl = document.getElementById('categoryTitle');
@@ -591,6 +608,7 @@ function loadFullCollections() {
         .catch(err => console.error("Error loading full collections:", err));
 }
 
+/*
 function updateBreadcrumbs(categoryID) {
     const trail = document.getElementById('breadcrumb-trail');
     if (!trail) return;
@@ -613,5 +631,35 @@ function updateBreadcrumbs(categoryID) {
     }
 
     trail.innerHTML = html;
+}
+*/
+
+function updateBreadcrumbs(categoryEn, categoryTe) {
+    const trail = document.getElementById('breadcrumb-trail');
+    if (!trail) return;
+
+    // 1. Build the path using bilingual attributes
+    // This allows your language toggle to switch them instantly without a reload
+    let html = `
+        <a href="index.html" data-en="Home" data-te="హోమ్">Home</a>
+        <span class="separator">/</span>
+        <a href="collections.html" data-en="Collections" data-te="సేకరణలు">Collections</a>
+    `;
+
+    // 2. Add the specific category if provided
+    if (categoryEn && categoryTe) {
+        html += `
+            <span class="separator">/</span>
+            <span class="current-page" data-en="${categoryEn}" data-te="${categoryTe}">${categoryEn}</span>
+        `;
+    }
+
+    trail.innerHTML = html;
+
+    // 3. Trigger your existing language sync if necessary
+    // This ensures that if the user is already in Telugu mode, the new links show Telugu
+    if (typeof applyLanguage === "function") {
+        applyLanguage(currentLang); 
+    }
 }
 
