@@ -6,7 +6,9 @@
       "stones_en": "Kundan & Emeralds",
       "stones_te": "కుందన్ మరియు పచ్చలు"
     },
-    "images": [],
+    "images": [
+      "Synced"
+    ],
     "id": 1,
     "category_id": 1,
     "category": "bridal",
@@ -14,7 +16,8 @@
     "title_te": "కుందన్ వధువు సెట్",
     "price": "Contact for Price",
     "desc_en": "Premium Kundan work with semi-precious stones.",
-    "desc_te": "విలువైన రాళ్లతో చేసిన ప్రీమియం కుందన్ పని."
+    "desc_te": "విలువైన రాళ్లతో చేసిన ప్రీమియం కుందన్ పని.",
+    "image": "Synced"
   },
   {
     "specs": {
@@ -23,7 +26,9 @@
       "stones_en": "None",
       "stones_te": "ఏమీ లేవు"
     },
-    "images": [],
+    "images": [
+      "Synced"
+    ],
     "id": 2,
     "category_id": 1,
     "category": "bridal",
@@ -31,7 +36,8 @@
     "title_te": "వధువు బంగారు హారం సెట్",
     "price": "Contact for Price",
     "desc_en": "Traditional bridal necklace set with intricate detailing.",
-    "desc_te": "వివాహ వేడుకల కోసం ప్రత్యేకంగా రూపొందించిన సంప్రదాయ హారం."
+    "desc_te": "వివాహ వేడుకల కోసం ప్రత్యేకంగా రూపొందించిన సంప్రదాయ హారం.",
+    "image": "Synced"
   },
   {
     "specs": {
@@ -40,7 +46,9 @@
       "stones_en": "VVS1 Solitaire",
       "stones_te": "VVS1 సాలిటైర్"
     },
-    "images": [],
+    "images": [
+      "Synced"
+    ],
     "id": 3,
     "category_id": 2,
     "category": "diamond",
@@ -48,7 +56,8 @@
     "title_te": "సాలిటైర్ డైమండ్ రింగ్",
     "price": "Contact for Price",
     "desc_en": "GIA certified diamond set in 18k white gold.",
-    "desc_te": "18 క్యారెట్ల వైట్ గోల్డ్‌లో సెట్ చేయబడిన డైమండ్."
+    "desc_te": "18 క్యారెట్ల వైట్ గోల్డ్‌లో సెట్ చేయబడిన డైమండ్.",
+    "image": "Synced"
   },
   {
     "specs": {
@@ -57,7 +66,9 @@
       "stones_en": "12ct Total Diamonds",
       "stones_te": "12 క్యారెట్ల డైమండ్స్"
     },
-    "images": [],
+    "images": [
+      "Synced"
+    ],
     "id": 4,
     "category_id": 2,
     "category": "diamond",
@@ -65,7 +76,8 @@
     "title_te": "డైమండ్ స్టేట్‌మెంట్ నెక్లెస్",
     "price": "Contact for Price",
     "desc_en": "Luxury diamond necklace for premium occasions.",
-    "desc_te": "ప్రత్యేక వేడుకల కోసం విలాసవంతమైన డైమండ్ హారం."
+    "desc_te": "ప్రత్యేక వేడుకల కోసం విలాసవంతమైన డైమండ్ హారం.",
+    "image": "Synced"
   },
   {
     "specs": {
@@ -74,7 +86,9 @@
       "stones_en": "Antique Finish",
       "stones_te": "యాంటిక్ ఫినిష్"
     },
-    "images": [],
+    "images": [
+      "Synced"
+    ],
     "id": 5,
     "category_id": 3,
     "category": "daily",
@@ -82,7 +96,8 @@
     "title_te": "గోల్డ్ టెంపుల్ గాజులు",
     "price": "Contact for Price",
     "desc_en": "Traditional temple design for daily elegance.",
-    "desc_te": "రోజువారీ ఉపయోగం కోసం సంప్రదాయ టెంపుల్ డిజైన్."
+    "desc_te": "రోజువారీ ఉపయోగం కోసం సంప్రదాయ టెంపుల్ డిజైన్.",
+    "image": "Synced"
   },
   {
     "specs": {
@@ -92,6 +107,7 @@
       "stones_te": "ఏమీ లేవు"
     },
     "images": [
+      "Synced",
       "Diamond Statement Necklace.jpg"
     ],
     "id": 6,
@@ -102,7 +118,7 @@
     "price": "Contact for Price",
     "desc_en": "Minimal elegant gold ring for daily wear.",
     "desc_te": "ప్రతిరోజు ధరించడానికి సరైన అందమైన గోల్డ్ రింగ్.",
-    "image": "Diamond Statement Necklace.jpg"
+    "image": "Synced"
   },
   {
     "specs": {
@@ -112,7 +128,8 @@
       "stones_te": "కెంపులు మరియు ముత్యాలు"
     },
     "images": [
-      "Classic_Gold_Ring.jpg"
+      "Classic_Gold_Ring.jpg",
+      "Synced"
     ],
     "id": 7,
     "category_id": 1,
@@ -133,6 +150,7 @@
     },
     "images": [
       "Bridal_Gold_Necklace_Set.jpg",
+      "Failed",
       "Bridal Gold Necklace Set.jpg"
     ],
     "id": 8,
@@ -152,7 +170,9 @@
       "stones_en": "None",
       "stones_te": "ఏమీ లేవు"
     },
-    "images": [],
+    "images": [
+      "Synced"
+    ],
     "id": 9,
     "category_id": 3,
     "category": "daily",
@@ -160,7 +180,8 @@
     "title_te": "మినిమలిస్ట్ బంగారు గాజు",
     "price": "Contact for Price",
     "desc_en": "Sleek 22k gold bangle for daily elegance.",
-    "desc_te": "రోజువారీ ధరించడానికి అనువైన బంగారు గాజు."
+    "desc_te": "రోజువారీ ధరించడానికి అనువైన బంగారు గాజు.",
+    "image": "Synced"
   },
   {
     "specs": {
@@ -171,6 +192,7 @@
     },
     "images": [
       "diamond_studs.jpg",
+      "Synced",
       "Diamond Statement Necklace.jpg"
     ],
     "id": 10,
@@ -191,7 +213,8 @@
       "stones_te": "ఏమీ లేవు"
     },
     "images": [
-      "gold_bangle.jpg"
+      "gold_bangle.jpg",
+      "Synced"
     ],
     "id": 11,
     "category_id": 3,
