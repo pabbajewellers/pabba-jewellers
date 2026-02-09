@@ -24,22 +24,40 @@
     </nav>
 
     <section class="catalog-section">
-        <!--
-        <div class="breadcrumb">
-            <a href="index.html" data-en="Home" data-te="హోమ్">Home</a> <span>/</span> 
-            <span id="breadcrumbCategory" data-en="Catalog" data-te="కాటలాగ్">Catalog</span>
+        <div class="breadcrumb-container">
+            <div class="container">
+                <nav id="breadcrumb-trail" aria-label="Breadcrumb">
+                    </nav>
+            </div>
         </div>
-        -->
+    
+        <div class="container">
+            <header class="catalog-header">
+                <h1 id="categoryTitle" class="gold" data-en="Our Collections" data-te="మా సేకరణలు">
+                    Our Collections
+                </h1>
+                <p id="itemCount" style="opacity: 0.7; font-size: 0.9rem; letter-spacing: 1px;">
+                    Scanning inventory...
+                </p>
+            </header>  
+    
+            <div class="catalog-grid" id="catalogGrid">
+                </div>
+        </div>
+    </section>
+    
+    <!--
+    <section class="catalog-section">  
         <nav class="breadcrumb-nav" aria-label="Breadcrumb">
             <div class="breadcrumb" id="breadcrumb-trail"></div>
         </nav>
         <header class="catalog-header">
             <h1 id="categoryTitle" class="gold" data-en="Our Collections" data-te="మా సేకరణలు">Our Collections</h1>
             <p id="itemCount">Scanning inventory...</p>
-        </header>  
-
+        </header>
         <div class="catalog-grid" id="catalogGrid"></div>
     </section>
+    -->
     
     <div id="productModal" class="modal">
         <div class="modal-content">
