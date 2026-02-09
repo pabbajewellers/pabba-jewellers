@@ -1,8 +1,13 @@
 [
   {
-    "specs": {},
+    "specs": {
+      "purity": "22K Gold",
+      "weight": "45.00g",
+      "stones_en": "Kundan & Emeralds",
+      "stones_te": "కుందన్ మరియు పచ్చలు"
+    },
     "images": [
-      "Classic Gold Ring.jpg"
+      "Classic_Gold_Ring.jpg"
     ],
     "id": 1,
     "category_id": 1,
@@ -12,12 +17,17 @@
     "price": "Contact for Price",
     "desc_en": "Premium Kundan work with semi-precious stones.",
     "desc_te": "విలువైన రాళ్లతో చేసిన ప్రీమియం కుందన్ పని.",
-    "image": "Classic Gold Ring.jpg"
+    "image": "Classic_Gold_Ring.jpg"
   },
   {
-    "specs": {},
+    "specs": {
+      "purity": "22K Gold",
+      "weight": "82.50g",
+      "stones_en": "None",
+      "stones_te": "ఏమీ లేవు"
+    },
     "images": [
-      "Bridal Gold Necklace Set.jpg"
+      "Bridal_Gold_Necklace_Set.jpg"
     ],
     "id": 2,
     "category_id": 1,
@@ -27,12 +37,17 @@
     "price": "Contact for Price",
     "desc_en": "Traditional bridal necklace set with intricate detailing.",
     "desc_te": "వివాహ వేడుకల కోసం ప్రత్యేకంగా రూపొందించిన సంప్రదాయ హారం.",
-    "image": "Bridal Gold Necklace Set.jpg"
+    "image": "Bridal_Gold_Necklace_Set.jpg"
   },
   {
-    "specs": {},
+    "specs": {
+      "purity": "18K White Gold",
+      "weight": "3.20g",
+      "stones_en": "VVS1 Solitaire",
+      "stones_te": "VVS1 సాలిటైర్"
+    },
     "images": [
-      "Classic Gold Ring.jpg"
+      "Classic_Gold_Ring.jpg"
     ],
     "id": 3,
     "category_id": 2,
@@ -42,12 +57,17 @@
     "price": "Contact for Price",
     "desc_en": "GIA certified diamond set in 18k white gold.",
     "desc_te": "18 క్యారెట్ల వైట్ గోల్డ్‌లో సెట్ చేయబడిన డైమండ్.",
-    "image": "Classic Gold Ring.jpg"
+    "image": "Classic_Gold_Ring.jpg"
   },
   {
-    "specs": {},
+    "specs": {
+      "purity": "18K Gold",
+      "weight": "38.10g",
+      "stones_en": "12ct Total Diamonds",
+      "stones_te": "12 క్యారెట్ల డైమండ్స్"
+    },
     "images": [
-      "Diamond Statement Necklace.jpg"
+      "Diamond_Statement_Necklace.jpg"
     ],
     "id": 4,
     "category_id": 2,
@@ -57,12 +77,17 @@
     "price": "Contact for Price",
     "desc_en": "Luxury diamond necklace for premium occasions.",
     "desc_te": "ప్రత్యేక వేడుకల కోసం విలాసవంతమైన డైమండ్ హారం.",
-    "image": "Diamond Statement Necklace.jpg"
+    "image": "Diamond_Statement_Necklace.jpg"
   },
   {
-    "specs": {},
+    "specs": {
+      "purity": "22K Gold",
+      "weight": "24.00g",
+      "stones_en": "Antique Finish",
+      "stones_te": "యాంటిక్ ఫినిష్"
+    },
     "images": [
-      "Diamond Statement Necklace.jpg"
+      "Diamond_Statement_Necklace.jpg"
     ],
     "id": 5,
     "category_id": 3,
@@ -72,13 +97,17 @@
     "price": "Contact for Price",
     "desc_en": "Traditional temple design for daily elegance.",
     "desc_te": "రోజువారీ ఉపయోగం కోసం సంప్రదాయ టెంపుల్ డిజైన్.",
-    "image": "Diamond Statement Necklace.jpg"
+    "image": "Diamond_Statement_Necklace.jpg"
   },
   {
-    "specs": {},
+    "specs": {
+      "purity": "22K Gold",
+      "weight": "6.50g",
+      "stones_en": "None",
+      "stones_te": "ఏమీ లేవు"
+    },
     "images": [
-      "Classic Gold Ring.jpg",
-      "Bridal Gold Necklace Set.jpg",
+      "Classic_Gold_Ring.jpg",
       "Diamond Statement Necklace.jpg"
     ],
     "id": 6,
@@ -89,61 +118,20 @@
     "price": "Contact for Price",
     "desc_en": "Minimal elegant gold ring for daily wear.",
     "desc_te": "ప్రతిరోజు ధరించడానికి సరైన అందమైన గోల్డ్ రింగ్.",
-    "image": "Classic Gold Ring.jpg"
+    "image": "Classic_Gold_Ring.jpg"
   },
   {
     "specs": {
-      "purity": "22K Gold (BIS Hallmarked)",
-      "weight": "65.40 Grams",
-      "stones_en": "Premium Kundan & Emeralds"
-    },
-    "images": [
-      "Classic Gold Ring.jpg",
-      "Diamond Statement Necklace.jpg",
-      "Bridal Gold Necklace Set.jpg"
-    ],
-    "id": 7,
-    "category_id": 1,
-    "category": "bridal",
-    "title_en": "Kundan Bridal Set",
-    "title_te": "కుందన్ వధువు సెట్",
-    "price": "Contact for Price",
-    "desc_en": "Premium Kundan work with semi-precious stones.",
-    "desc_te": "విలువైన రాళ్లతో చేసిన ప్రీమియం కుందన్ పని.",
-    "image": "Classic Gold Ring.jpg"
-  },
-  {
-    "specs": {
-      "purity": "18K White Gold",
-      "stones_en": "1.5ct GIA Certified Diamond"
-    },
-    "images": [
-      "Diamond Statement Necklace.jpg",
-      "Products_Images/8.image_name2.035456.jpg",
-      "Bridal Gold Necklace Set.jpg"
-    ],
-    "id": 8,
-    "category_id": 2,
-    "category": "diamond",
-    "title_en": "Solitaire Diamond Ring",
-    "title_te": "సాలిటైర్ డైమండ్ రింగ్",
-    "price": "Contact for Price",
-    "desc_en": "GIA certified diamond set in 18k white gold.",
-    "desc_te": "18 క్యారెట్ల వైట్ గోల్డ్‌లో సెట్ చేయబడిన అత్యుత్తమ డైమండ్ రింగ్.",
-    "image": "Diamond Statement Necklace.jpg"
-  },
-  {
-    "specs": {
-      "purity": "22K",
-      "weight": "45g",
+      "purity": "22K Gold",
+      "weight": "45.00g",
       "stones_en": "Rubies & Pearls",
       "stones_te": "కెంపులు మరియు ముత్యాలు"
     },
     "images": [
       "temple_necklace.jpg",
-      "Classic Gold Ring.jpg"
+      "Classic_Gold_Ring.jpg"
     ],
-    "id": 9,
+    "id": 7,
     "category_id": 1,
     "category": "bridal",
     "title_en": "Antique Gold Necklace",
@@ -155,17 +143,18 @@
   },
   {
     "specs": {
-      "purity": "18K",
-      "weight": "4.2g",
+      "purity": "18K White Gold",
+      "weight": "4.20g",
       "stones_en": "VVS Diamonds",
       "stones_te": "VVS డైమండ్స్"
     },
     "images": [
       "diamond_studs.jpg",
-      "Bridal Gold Necklace Set.jpg",
-      "Diamond Statement Necklace.jpg"
+      "Bridal_Gold_Necklace_Set.jpg",
+      "Diamond_Statement_Necklace.jpg",
+      "Bridal Gold Necklace Set.jpg"
     ],
-    "id": 10,
+    "id": 8,
     "category_id": 2,
     "category": "diamond",
     "title_en": "Diamond Studs",
@@ -177,12 +166,56 @@
   },
   {
     "specs": {
+      "purity": "22K Gold",
+      "weight": "12.00g",
+      "stones_en": "None",
+      "stones_te": "ఏమీ లేవు"
+    },
+    "images": [
+      "gold_bangle.jpg"
+    ],
+    "id": 9,
+    "category_id": 3,
+    "category": "daily",
+    "title_en": "Minimalist Bangle",
+    "title_te": "మినిమలిస్ట్ బంగారు గాజు",
+    "price": "Contact for Price",
+    "desc_en": "Sleek 22k gold bangle for daily elegance.",
+    "desc_te": "రోజువారీ ధరించడానికి అనువైన బంగారు గాజు.",
+    "image": "gold_bangle.jpg"
+  },
+  {
+    "specs": {
+      "purity": "18K",
+      "weight": "4.2g",
+      "stones_en": "VVS Diamonds",
+      "stones_te": "VVS డైమండ్స్"
+    },
+    "images": [
+      "1ttA7ALVpYUP1rCVbszwR7J1S6hUjdbu-",
+      "diamond_studs.jpg",
+      "1kofcI9LlZvj2Mg0tDONoB9_bfw-9PYk3",
+      "Diamond Statement Necklace.jpg"
+    ],
+    "id": 10,
+    "category_id": 2,
+    "category": "diamond",
+    "title_en": "Diamond Studs",
+    "title_te": "డైమండ్ చెవి రింగులు",
+    "price": "Contact for Price",
+    "desc_en": "GIA certified solitaire studs in 18k white gold.",
+    "desc_te": "18 క్యారెట్ల వైట్ గోల్డ్‌లో డైమండ్ స్టడ్స్.",
+    "image": "1ttA7ALVpYUP1rCVbszwR7J1S6hUjdbu-"
+  },
+  {
+    "specs": {
       "purity": "22K",
       "weight": "12g",
       "stones_en": "None",
       "stones_te": "ఏమీ లేవు"
     },
     "images": [
+      "1Hon2EGoIb0vforIEGYN5o2VWckbdefwP",
       "gold_bangle.jpg"
     ],
     "id": 11,
@@ -193,6 +226,6 @@
     "price": "Contact for Price",
     "desc_en": "Sleek 22k gold bangle for daily elegance.",
     "desc_te": "రోజువారీ ధరించడానికి అనువైన బంగారు గాజు.",
-    "image": "gold_bangle.jpg"
+    "image": "1Hon2EGoIb0vforIEGYN5o2VWckbdefwP"
   }
 ]
