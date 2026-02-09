@@ -49,12 +49,10 @@ function renderCatalog(items) {
     grid.innerHTML = items.map(item => {
         // IT Standard: Ensure we handle the folder path correctly
         // If image_name1 is "Products_Images/xyz.jpg", the URL becomes images/Products_Images/xyz.jpg
+        debugger;
         console.log(item);
         const fullImagePath = `images/${item.image_name1}`;
         const displayName = currentLang === 'en' ? item.name_en : item.name_te;
-
-        alert(fullImagePath);
-        alert(displayName);
 
         return `
             <div class="product-card" onclick="openProductModal('${item.id}')">
