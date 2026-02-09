@@ -202,5 +202,26 @@
     "desc_en": "Sleek 22k gold bangle for daily elegance.",
     "desc_te": "రోజువారీ ధరించడానికి అనువైన బంగారు గాజు.",
     "image": "gold_bangle.jpg"
+  },
+  {
+    "specs": {
+      "purity": "22K Gold (BIS Hallmarked)",
+      "weight": "115.30 Grams",
+      "stones_en": "Burmese Rubies & South Sea Pearls",
+      "stones_te": "బర్మీస్ కెంపులు మరియు దక్షిణ సముద్ర ముత్యాలు"
+    },
+    "images": [
+      "Products_Images/20260208234535-c391652c.image_name1.054922.jpg",
+      "Products_Images/20260208234535-c391652c.image_name2.054922.jpg",
+      "Products_Images/20260208234535-c391652c.image_name3.054922.jpg"
+    ],
+    "id": "20260208234535-c391652c",
+    "category_id": "1",
+    "title_en": "Heritage Nakshi Bridal Haram",
+    "title_te": "హెరిటేజ్ నక్షి బ్రైడల్ హారం",
+    "desc_en": "An exquisite 22k gold Nakshi work Haram featuring Goddess Lakshmi motifs, adorned with premium Burmese rubies and South Sea pearls.",
+    "desc_te": "మహాలక్ష్మి అమ్మవారి నగిషీ పనితనంతో, బర్మీస్ కెంపులు మరియు దక్షిణ సముద్ర ముత్యాలతో రూపొందించబడిన అద్భుతమైన 22 క్యారెట్ల బంగారు హారం.",
+    "image": "Products_Images/20260208234535-c391652c.image_name1.054922.jpg",
+    "created_at": "2026-02-09T05:45:35.000Z"
   }
 ]
