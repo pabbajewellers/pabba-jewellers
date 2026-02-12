@@ -16,12 +16,20 @@ jobs:
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v4
+        with:
+          # Use your BYPASS_TOKEN here to handle branch protection
+          token: ${{ secrets.BYPASS_TOKEN }}
+          fetch-depth: 0
 
       - name: Optimize & Convert Images
         uses: stellasoftio/image-optimizer-action@v1
+        env:
+          # This is the auth fix. Some versions of Octokit.
+          # Inside actions need this env variable specifically.
+          GITHUB_TOKEN: ${{ secrets.BYPASS_TOKEN }}
         with:
+          # Also passing it here for the action's own logic
           token: ${{ secrets.BYPASS_TOKEN }}
-          fetch-depth: 0
           # Create WebP versions
           export-webp: true
           # Create AVIF versions
@@ -54,4 +62,5 @@ jobs:
         with:
           commit_message: "Automated Image Optimization and move to DIST [Skip CI]"
           file_pattern: 'images/dist/**'
+          push_options: '--force'
     
