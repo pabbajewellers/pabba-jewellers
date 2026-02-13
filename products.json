@@ -169,9 +169,7 @@
       "stones_en": "None",
       "stones_te": "ఏమీ లేవు"
     },
-    "images": [
-      "images/dist/gold_bangle.jpg"
-    ],
+    "images": [],
     "id": 9,
     "category_id": 3,
     "category": "daily",
@@ -179,8 +177,7 @@
     "title_te": "మినిమలిస్ట్ బంగారు గాజు",
     "price": "Contact for Price",
     "desc_en": "Sleek 22k gold bangle for daily elegance.",
-    "desc_te": "రోజువారీ ధరించడానికి అనువైన బంగారు గాజు.",
-    "image": "images/dist/gold_bangle.jpg"
+    "desc_te": "రోజువారీ ధరించడానికి అనువైన బంగారు గాజు."
   },
   {
     "specs": {
