@@ -36,6 +36,9 @@ jobs:
           export-avif: true
           # We'll handle moving files ourselves in the next step
           replace-original-after-export-webp: false
+          # ADD THIS LINE TO SKIP THE .GITKEEP FILE
+          ignore-paths: '**/.*, **/README.md, **/.gitkeep'
+          full-history: false
 
       - name: Move to Dist Folder & Remove Raw Images
         run: |
