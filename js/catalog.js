@@ -140,14 +140,25 @@ function openProductModal(id) {
         
         // Generate the Picture HTML
         const displayName = currentLang === 'en' ? product.title_en : product.title_te;
-        const picHtml = getPictureHtml(imgName, displayName, "");
+        const picHtmlString = getPictureHtml(imgName, displayName, "");
+
+        // Convert string to real DOM element
+        const wrapper = document.createElement('div');
+        wrapper.innerHTML = picHtmlString.trim();
+        const picHtml = wrapper.firstElementChild;
 
         // Grab the actual <img> tag from inside the <picture> for logic
         const img = picHtml.querySelector('img');
+
+        // Remove loader when image loads
+        img.onload = () => {
+            const loader = container.querySelector('.loader');
+            if (loader) loader.remove();
+        };
         
         img.onclick = (e) => e.currentTarget.classList.toggle('zoomed');
         //track.appendChild(img);
-        track.appendChild(picHtml);
+        container.appendChild(picHtml);
         track.appendChild(container);        
 
         const dot = document.createElement('div');
