@@ -157,8 +157,8 @@ function openProductModal(id) {
         };
         
         img.onclick = (e) => e.currentTarget.classList.toggle('zoomed');
-        //track.appendChild(img);
-        container.appendChild(picHtml);
+        track.appendChild(img);
+        //container.appendChild(picHtml);
         track.appendChild(container);        
 
         const dot = document.createElement('div');
