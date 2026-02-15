@@ -110,7 +110,7 @@ function updateBreadcrumbs(categoryEn, categoryTe) {
 }
 
 function openProductModal(id) {
-    alert(allProducts.length);
+    alert(typeof(id));
     // 1. Setup UI Elements & Data
     const product = allProducts.find(p => p.id === id);
     if (!product) {
