@@ -1547,5 +1547,32 @@ body.modal-open #backToTop,
     transform: scale(1.1);
 }
 
+/* 1. Target the Picture wrapper to handle the carousel layout */
+.carousel-track picture {
+    width: 100%;
+    flex: 0 0 100%; /* Keeps one image per slide */
+    aspect-ratio: 1 / 1;
+    display: block; /* Important for layout consistency */
+}
 
+/* 2. Target the img inside the picture for the visual styling */
+.carousel-track picture img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    cursor: zoom-in;
+    transition: transform 0.4s ease;
+}
+
+.slide-container {
+    flex: 0 0 100%; /* Each container is exactly one slide */
+    width: 100%;
+    aspect-ratio: 1 / 1;
+}
+
+.slide-container picture img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
 
