@@ -126,19 +126,28 @@ function openProductModal(id) {
         container.className = 'slide-container'; // Ensures relative positioning for loader
         container.innerHTML = '<div class="loader"></div>';
         
+        /*
         const img = document.createElement('img');
         const cleanPath = imgName.startsWith('images/') ? imgName : `images/${imgName}`;
         img.src = cleanPath;
-        img.alt = product.title_en;
+        img.alt = product.title_en;        
         
         // Hide loader once image is ready
         img.onload = () => {
             const loader = container.querySelector('.loader');
             if (loader) loader.remove();
-        };
+        };*/
+        
+        // Generate the Picture HTML
+        const displayName = currentLang === 'en' ? product.title_en : product.title_te;
+        const picHtml = getPictureHtml(imgName, displayName, "");
+
+        // Grab the actual <img> tag from inside the <picture> for logic
+        const img = picHtml.querySelector('img');
         
         img.onclick = (e) => e.currentTarget.classList.toggle('zoomed');
-        track.appendChild(img);
+        //track.appendChild(img);
+        track.appendChild(picHtml);
         track.appendChild(container);        
 
         const dot = document.createElement('div');
