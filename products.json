@@ -12,6 +12,8 @@
       "images/dist/1.image_name3.015842.jpg"
     ],
     "id": 1,
+    "product_id": "kundan-bridal-set",
+    "gallery_id": "bridal-collection",
     "category_id": 1,
     "category": "bridal",
     "title_en": "Kundan Bridal Set",
@@ -32,6 +34,8 @@
       "images/dist/2.image_name1.015948.jpg"
     ],
     "id": 2,
+    "product_id": "bridal-gold-necklace-set",
+    "gallery_id": "bridal-collection",
     "category_id": 1,
     "category": "bridal",
     "title_en": "Bridal Gold Necklace Set",
@@ -52,6 +56,8 @@
       "images/dist/3.image_name1.035332.jpg"
     ],
     "id": 3,
+    "product_id": "solitaire-diamond-ring",
+    "gallery_id": "diamond-jewellery",
     "category_id": 2,
     "category": "diamond",
     "title_en": "Solitaire Diamond Ring",
@@ -72,6 +78,8 @@
       "images/dist/4.image_name1.035350.jpg"
     ],
     "id": 4,
+    "product_id": "diamond-statement-necklace",
+    "gallery_id": "diamond-jewellery",
     "category_id": 2,
     "category": "diamond",
     "title_en": "Diamond Statement Necklace",
@@ -94,6 +102,8 @@
       "images/dist/5.image_name3.050830.jpg"
     ],
     "id": 5,
+    "product_id": "gold-temple-bangle",
+    "gallery_id": "daily-wear",
     "category_id": 3,
     "category": "daily",
     "title_en": "Gold Temple Bangle",
@@ -114,6 +124,8 @@
       "images/dist/6.image_name1.035241.jpg"
     ],
     "id": 6,
+    "product_id": "classic-gold-ring",
+    "gallery_id": "daily-wear",
     "category_id": 3,
     "category": "daily",
     "title_en": "Classic Gold Ring",
@@ -135,6 +147,8 @@
       "images/dist/7.image_name2.050741.jpg"
     ],
     "id": 7,
+    "product_id": "antique-gold-necklace",
+    "gallery_id": "bridal-collection",
     "category_id": 1,
     "category": "bridal",
     "title_en": "Antique Gold Necklace",
@@ -155,6 +169,8 @@
       "images/dist/8.image_name1.035412.jpg"
     ],
     "id": 8,
+    "product_id": "diamond-studs",
+    "gallery_id": "diamond-jewellery",
     "category_id": 2,
     "category": "diamond",
     "title_en": "Diamond Studs",
@@ -175,6 +191,8 @@
       "images/dist/9.image_name1.035311.jpg"
     ],
     "id": 9,
+    "product_id": "minimalist-bangle",
+    "gallery_id": "daily-wear",
     "category_id": 3,
     "category": "daily",
     "title_en": "Minimalist Bangle",
@@ -197,7 +215,9 @@
       "images/dist/10.image_name3.035510.jpg"
     ],
     "id": 10,
-    "category_id": "1",
+    "product_id": "heritage-nakshi-bridal-haram",
+    "gallery_id": "bridal-collection",
+    "category_id": 1,
     "category": "bridal",
     "title_en": "Heritage Nakshi Bridal Haram",
     "title_te": "హెరిటేజ్ నక్షి బ్రైడల్ హారం",
