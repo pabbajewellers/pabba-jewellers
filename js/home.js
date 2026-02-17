@@ -133,20 +133,21 @@ async function loadTestimonials() {
     if (!container) return;
 
     try {
-        const data = await fetchWithSmartCache("data/testimonials.json');
+        const data = await fetchWithSmartCache("data/testimonials.json");
         //const data = await response.json();
+        //<div class="stars">${item.rating}</div>
         
         container.innerHTML = data.map((item, index) => `
             <div class="testimonial" style="display: ${index === 0 ? 'block' : 'none'}; opacity: ${index === 0 ? '1' : '0'}">
                 <p class="testimonial-text">"${item.text}"</p>
                 <h4 class="testimonial-author">- ${item.name}</h4>
-                <div class="stars">${item.rating}</div>
+                <div class="stars">${'★'.repeat(item.rating)}${'☆'.repeat(5 - item.rating)}</div>
             </div>
         `).join('');
 
         if (data.length > 1) startCarousel();
     } catch (error) {
-        container.innerHTML = "<p>Trusted by families since 2026.</p>";
+        container.innerHTML = "<p>Trusted by families since ${CONFIG.ESTABLISHED_YEAR}.</p>";
     }
 }
 
