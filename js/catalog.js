@@ -22,7 +22,7 @@ async function loadCatalogPage() {
             }
             // filteredProducts = allProducts.filter(p => String(p.category_id) === String(categoryID));
             // 3. Filter products using the string-based category_id
-            filteredProducts = allProducts.filter(p => p.category_id === categoryID);
+            filteredProducts = allProducts.filter(p => p.gallery_id === categoryID);
         } else {
             updateBreadcrumbs();
             filteredProducts = allProducts;
