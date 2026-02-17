@@ -1,42 +1,36 @@
 [
   {
     "gallery_id": "bridal-collection",
-    "id": 1,
     "name_en": "Bridal Collection",
     "name_te": "వధువు కలెక్షన్",
     "image": "images/dist/1.image_name1.235202.jpg"
   },
   {
     "gallery_id": "diamond-jewellery",
-    "id": 2,
     "name_en": "Diamond Jewellery",
     "name_te": "డైమండ్ నగలు",
     "image": "images/dist/2.image_name1.235232.jpg"
   },
   {
     "gallery_id": "daily-wear",
-    "id": 3,
     "name_en": "Daily Wear",
     "name_te": "ప్రతిరోజు ధరించే నగలు",
     "image": "images/dist/3.image_name1.235259.jpg"
   },
   {
     "gallery_id": "temple-jewellery",
-    "id": 4,
     "name_en": "Temple Jewellery",
     "name_te": "ఆలయ నగలు",
     "image": "images/dist/4.image_name1.235347.jpg"
   },
   {
     "gallery_id": "antique-collection",
-    "id": 5,
     "name_en": "Antique Collection",
     "name_te": "ప్రాచీన నగల కలెక్షన్",
     "image": "images/dist/5.image_name1.235424.jpg"
   },
   {
     "gallery_id": "platinum-jewellery",
-    "id": 6,
     "name_en": "Platinum Jewellery",
     "name_te": "ప్లాటినం నగలు",
     "image": "images/dist/6.image_name1.235502.jpg"
