@@ -39,7 +39,7 @@ function renderCatalog(items) {
         return;
     }
     
-    paginatedItems = items;
+    paginatedProducts = items;
     const totalPages = Math.ceil(items.length / CONFIG.ITEMS_PER_PAGE);
 
     // 1. Slice products for current page
