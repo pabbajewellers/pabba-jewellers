@@ -15,6 +15,14 @@ const YAML_FILENAME = "optimize-images.yml";
  * Handle Webhook from AppSheet
  */
 function doPost(e) {
+  // Code to check if all Github tokens and required key data is added to App Script Properties
+  try {
+    checkSetup(); // Triggered here! If it fails, it sends an error to the site.
+  } catch (err) {
+    return ContentService.createTextOutput(JSON.stringify({ error: err.message }))
+      .setMimeType(ContentService.MimeType.JSON);
+  }
+
   const lock = LockService.getScriptLock();
 
   //Try to get a lock for 1 second. If we can't get it, it means a sync is already running.
@@ -34,6 +42,18 @@ function doPost(e) {
   catch(err){
     return ContentService.createTextOutput("Error: " + err.message);
   }  
+}
+
+// Code to check if all Github tokens and required key data is added to App Script Properties
+function checkSetup() {
+  const props = PropertiesService.getScriptProperties().getProperties();
+  const required = ['GH_TOKEN', 'REPO_OWNER', 'REPO_NAME', 'DRIVE_FOLDER_ID_COLLECTIONS', 'DRIVE_FOLDER_ID_PRODUCTS'];
+  
+  required.forEach(prop => {
+    if (!props[prop]) {
+      throw new Error(`MISSING CONFIG: Please add '${prop}' to Script Properties.`);
+    }
+  });
 }
 
 /**
@@ -310,5 +330,17 @@ function triggerGitHubWorkflow() {
 }
 
 function onOpen() {
-  SpreadsheetApp.getUi().createMenu('🚀 Pabba Admin').addItem('Sync All', 'doPost').addToUi();
+  SpreadsheetApp.getUi().createMenu('🚀 Pabba Admin')
+    .addItem('Sync All', 'doPost')
+    .addItem('Verify Setup Keys', 'checkSetupWithUI')
+    .addToUi();
+}
+
+function checkSetupWithUI() {
+  try {
+    checkSetup();
+    SpreadsheetApp.getUi().alert("✅ All keys found! Site is ready.");
+  } catch (err) {
+    SpreadsheetApp.getUi().alert("❌ " + err.message);
+  }
 }

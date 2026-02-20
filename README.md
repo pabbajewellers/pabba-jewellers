@@ -9,7 +9,7 @@ A premium, bilingual (English/Telugu) jewelry catalog website. This project feat
 - **Premium Admin UI:** Includes a mobile AppSheet app for inventory management.
 
 ## 📁 Folder Structure
-- `/js`: Core logic (`config.js`, `utility.js`, `modal.js`).
+- `/js`: Core logic (`config.js`, `utility.js`, `core.js`).
 - `/images`: Product and asset gallery (Raw/Optimized).
 - `/css`: Stylesheets (Base and Theme-specific).
 - `/data`: JSON files (`products.json`, `collections.json`) managed by the backend.
@@ -25,12 +25,12 @@ A premium, bilingual (English/Telugu) jewelry catalog website. This project feat
    - `GH_TOKEN`: Your GitHub Personal Access Token.
    - `REPO_OWNER`: Your GitHub Username.
    - `REPO_NAME`: Your Repository Name.
+   - `DRIVE_FOLDER_ID_COLLECTIONS`: The ID of the Google Drive folder where you store collection images.
    - `DRIVE_FOLDER_ID_PRODUCTS`: The ID of the Google Drive folder where you store product images.
 3. **Deploy:** Click `Deploy` > `New Deployment` > `Web App`. Set access to "Anyone".
 
 ### 2. Frontend Configuration
 1. **Link Backend:** Open `js/config.js` and update the settings (Store Name, Social Links).
-2. **Script URL:** Update the `SCRIPT_URL` with your deployed Apps Script URL to enable dynamic functions.
 
 ### 3. AppSheet Admin App (Premium UI)
 1. **Copy the UI Template:** Use the link below to clone the mobile admin interface:
